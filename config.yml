@@ -86,7 +86,7 @@ params:
 
   socialIcons:
     - name: github
-      url: "https://github.com/doxxedd"
+      url: "https://github.com/doxxedd?tab=repositories"
     - name: linkedin
       url: "https://www.linkedin.com/in/daniel-dinari/"
     - name: tryhackme
