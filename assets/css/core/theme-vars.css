@@ -18,12 +18,12 @@
 }
 
 .dark {
-    --theme: rgb(24, 28, 31); /*background*/
+    --theme: rgb(22, 25, 27); /*background*/
     --entry: rgb(31, 36, 37); /*post background*/
-    --primary: rgba(185, 142, 21, 0.911); /*big text, header, title (197, 149, 7) (190, 148, 33)*/
+    --primary: rgba(199, 149, 13, 0.945); /*big text, header, title (197, 149, 7) (190, 148, 33)*/
     --secondary: rgb(236, 236, 236); /*front page, footer, date text*/
     --tertiary: rgb(17, 17, 17); /*tag background, scrollbar*/
-    --content: rgb(206, 206, 206); /*main text*/
+    --content: rgb(221, 221, 221); /*main text*/
     --hljs-bg: rgb(28, 29, 33);
     --code-bg: rgb(17, 17, 17); /*code background*/
     --border: rgba(122, 122, 122, 0.664); /*tag and ToC border*/
