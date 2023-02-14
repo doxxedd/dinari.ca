@@ -20,21 +20,23 @@ menu:
     - name: Home
       url: /
       weight: 1
+    - name: About
+      url: about
+      weight: 2
     - name: Resume
       url: /resume.pdf
-      weight: 2
+      weight: 3
     - identifier: tags
       name: Tags
       url: tags/
-      weight: 3
+      weight: 4
     - name: Search
       url: search/
-      weight: 4
+      weight: 5
 
 outputs:
     home:
         - HTML
-        - RSS
         - JSON
 
 params:
@@ -43,7 +45,7 @@ params:
   description: "dinari.ca"
   keywords: [Blog, Portfolio, PaperMod]
   # author: Me
-  # images: ["https://cdn.7tv.app/emote/6329da94345c8855a28db877/4x.webp"]
+  # images: [""]
   DateFormat: "January 2, 2006 "
   defaultTheme: dark #auto, light
   disableThemeToggle: false
@@ -92,7 +94,7 @@ params:
     - name: ctftime
       url: "https://ctftime.org/user/154114"
     - name: discord
-      url: "https://dinari.ca/discord"
+      # url: "about"
     # - name: twitter
     #   url: "https://twitter.com/ddoxxedd"
 
@@ -101,26 +103,24 @@ params:
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
-  # fuseOpts:
-  #   isCaseSensitive: false
-  #   shouldSort: true
-  #   location: 0
-  #   distance: 1000
-  #   threshold: 0.4
-  #   minMatchCharLength: 0
-  #   keys: ["title", "permalink", "summary", "content"]
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.2
+    minMatchCharLength: 2
+    keys: ["title", "permalink", "summary", "content"]
 
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 markup:
   highlight:
     noClasses: false
+    lineNos: true
+    style: monokai
     # anchorLineNos: true
     # codeFences: true
     # guessSyntax: true
-    # lineNos: true
-    # style: monokai
-
-  # cover:
-  #   hidden: true # hide everywhere but not in structured data
-  #   hiddenInList: true # hide on list pages and home
-  #   hiddenInSingle: true # hide on single page
+  # goldmark:
+  #   renderer: 
+  #     unsafe: true
