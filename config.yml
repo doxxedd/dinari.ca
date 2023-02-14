@@ -1,6 +1,7 @@
 baseURL: https://dinari.ca/
 title: Daniel Dinari
 languageCode: en-us
+paginate: 7
 theme: "PaperMod"
 
 enableRobotsTXT: true
@@ -8,9 +9,9 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-minify:
-  disableXML: true
-  minifyOutput: false
+# minify:
+#   disableXML: true
+  # minifyOutput: false
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
@@ -18,11 +19,10 @@ params:
   description: "dinari.ca"
   keywords: [Blog, Portfolio, PaperMod]
   # author: Me
-  images: ["https://cdn.7tv.app/emote/6329da94345c8855a28db877/4x.webp"]
+  # images: ["https://cdn.7tv.app/emote/6329da94345c8855a28db877/4x.webp"]
   DateFormat: "January 2, 2006 "
   defaultTheme: auto # dark, light
   disableThemeToggle: true
-
   ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: true
@@ -38,54 +38,50 @@ params:
   hideSummary: false
   showtoc: true
   tocopen: false
-
-  assets:
-    # disableHLJS: true # to disable highlight.js
-    # disableFingerprinting: true
-    favicon: "<link / abs url>"
-    favicon16x16: "<link / abs url>"
-    favicon32x32: "<link / abs url>"
-    apple_touch_icon: "<link / abs url>"
-    safari_pinned_tab: "<link / abs url>"
+  hideFooter: false
 
   label:
     text: "Daniel Dinari"
-    icon: /apple-touch-icon.png
-    iconHeight: 35
+    # icon: 
+    # iconHeight: 35
 
   # home-info mode
   homeInfoParams:
     Title: "Hi there,"
-    Content: This is where you can find my  CTF writeups, resume and contact info
+    Content: >
+      My name is Daniel Dinari and I'm an undergraduate student at 
+      **Queen's University** studying Computing with a Security focus.
+      Here you can find my CTF writeups, [resume](/resume.pdf) and 
+      contact info.
 
   socialIcons:
     - name: github
       url: "https://github.com/doxxedd"
     - name: linkedin
       url: "https://www.linkedin.com/in/daniel-dinari/"
+    - name: tryhackme
+      url: https://tryhackme.com/p/ddoxxed
+    - name: ctftime
+      url: "https://ctftime.org/user/154114"
     - name: discord
       url: "https://dinari.ca/discord"
     # - name: twitter
     #   url: "https://twitter.com/ddoxxedd"
-
-  cover:
-    hidden: true # hide everywhere but not in structured data
-    hiddenInList: true # hide on list pages and home
-    hiddenInSingle: true # hide on single page
 
   editPost:
     URL: "https://github.com/doxxedd/dinari.ca/tree/main/content/"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
-  # for search
-  # https://fusejs.io/api/options.html
+  # for search https://fusejs.io/api/options.html
   outputs:
     home:
         - HTML
         - RSS
         - JSON
-  
+
+  assets:
+    disableHLJS: true
   fuseOpts:
     isCaseSensitive: false
     shouldSort: true
@@ -94,24 +90,22 @@ params:
     threshold: 0.4
     minMatchCharLength: 0
     keys: ["title", "permalink", "summary", "content"]
+
 menu:
   main:
-    - identifier: categories
-      name: categories
-      url: /categories/
-      weight: 10
+    - name: Home
+      url: /
+      weight: 1
+    - name: Resume
+      url: /resume.pdf
+      weight: 2
     - identifier: tags
-      name: tags
-      url: /tags/
-      weight: 20
-    - identifier: example
-      name: example.org
-      url: https://example.org
-      weight: 30
+      name: Tags
+      url: tags/
+      weight: 3
     - name: Search
       url: search/
-
-
+      weight: 4
 
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
@@ -123,3 +117,8 @@ markup:
     # guessSyntax: true
     # lineNos: true
     # style: monokai
+
+  # cover:
+  #   hidden: true # hide everywhere but not in structured data
+  #   hiddenInList: true # hide on list pages and home
+  #   hiddenInSingle: true # hide on single page
