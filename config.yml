@@ -64,7 +64,7 @@ params:
   hideSummary: false
   showtoc: true
   tocopen: false
-  hideFooter: false
+  hideFooter: true
 
   # label:
   #   text: "Daniel Dinari"
