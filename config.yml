@@ -40,7 +40,7 @@ outputs:
         - JSON
 
 params:
-  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  env: production
   title: Daniel Dinari
   description: "dinari.ca"
   keywords: [Blog, Portfolio, PaperMod]
@@ -79,7 +79,7 @@ params:
   homeInfoParams:
     Title: "Hi there,"
     Content: >
-      My name is Daniel Dinari and I'm an undergraduate student at 
+      My name is Daniel Dinari and I'm an undergrad student at 
       **Queen's University** studying Computing with a Security focus.
       Here you can find my CTF writeups, [resume](/resume.pdf) and 
       contact info.
@@ -94,7 +94,7 @@ params:
     - name: ctftime
       url: "https://ctftime.org/user/154114"
     - name: discord
-      # url: "about"
+      url: "/about/#discord"
     # - name: twitter
     #   url: "https://twitter.com/ddoxxedd"
 
