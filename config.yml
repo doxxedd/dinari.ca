@@ -1,17 +1,41 @@
 baseURL: https://dinari.ca/
 title: Daniel Dinari
 languageCode: en-us
-paginate: 7
 theme: "PaperMod"
 
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
+enableInlineShortcodes: true
+enableEmoji: true
+# pygmentsUseClasses: true
 
-# minify:
-#   disableXML: true
+minify:
+  disableXML: true
   # minifyOutput: false
+
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: 1
+    - name: Resume
+      url: /resume.pdf
+      weight: 2
+    - identifier: tags
+      name: Tags
+      url: tags/
+      weight: 3
+    - name: Search
+      url: search/
+      weight: 4
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
@@ -21,8 +45,8 @@ params:
   # author: Me
   # images: ["https://cdn.7tv.app/emote/6329da94345c8855a28db877/4x.webp"]
   DateFormat: "January 2, 2006 "
-  defaultTheme: auto # dark, light
-  disableThemeToggle: true
+  defaultTheme: dark #auto, light
+  disableThemeToggle: false
   ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: true
@@ -40,10 +64,14 @@ params:
   tocopen: false
   hideFooter: false
 
-  label:
-    text: "Daniel Dinari"
-    # icon: 
+  # label:
+  #   text: "Daniel Dinari"
+    # icon: /img.png
     # iconHeight: 35
+
+  assets:
+      disableHLJS: true
+      # disableFingerprinting: true
 
   # home-info mode
   homeInfoParams:
@@ -73,42 +101,16 @@ params:
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
-  # for search https://fusejs.io/api/options.html
-  outputs:
-    home:
-        - HTML
-        - RSS
-        - JSON
-
-  assets:
-    disableHLJS: true
-  fuseOpts:
-    isCaseSensitive: false
-    shouldSort: true
-    location: 0
-    distance: 1000
-    threshold: 0.4
-    minMatchCharLength: 0
-    keys: ["title", "permalink", "summary", "content"]
-
-menu:
-  main:
-    - name: Home
-      url: /
-      weight: 1
-    - name: Resume
-      url: /resume.pdf
-      weight: 2
-    - identifier: tags
-      name: Tags
-      url: tags/
-      weight: 3
-    - name: Search
-      url: search/
-      weight: 4
+  # fuseOpts:
+  #   isCaseSensitive: false
+  #   shouldSort: true
+  #   location: 0
+  #   distance: 1000
+  #   threshold: 0.4
+  #   minMatchCharLength: 0
+  #   keys: ["title", "permalink", "summary", "content"]
 
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
-pygmentsUseClasses: true
 markup:
   highlight:
     noClasses: false
