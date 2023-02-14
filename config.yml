@@ -3,40 +3,40 @@ title: Daniel Dinari
 languageCode: en-us
 theme: "PaperMod"
 
+enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-
 minify:
   disableXML: true
-  minifyOutput: true
+  minifyOutput: false
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: ExampleSite
-  description: "ExampleSite description"
+  title: Daniel Dinari
+  description: "dinari.ca"
   keywords: [Blog, Portfolio, PaperMod]
-  author: Me
-  images: ["<link or path of image for opengraph, twitter-cards>"]
-  DateFormat: "January 2, 2006"
+  # author: Me
+  images: ["https://cdn.7tv.app/emote/6329da94345c8855a28db877/4x.webp"]
+  DateFormat: "January 2, 2006 "
   defaultTheme: auto # dark, light
-  disableThemeToggle: false
+  disableThemeToggle: true
 
   ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
-  ShowWordCount: true
-  ShowRssButtonInSectionTermList: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: false
+  ShowRssButtonInSectionTermList: false
   UseHugoToc: true
   disableSpecial1stPost: false
   disableScrollToTop: false
   comments: false
   hidemeta: false
   hideSummary: false
-  showtoc: false
+  showtoc: true
   tocopen: false
 
   assets:
@@ -49,22 +49,24 @@ params:
     safari_pinned_tab: "<link / abs url>"
 
   label:
-    text: "Home"
+    text: "Daniel Dinari"
     icon: /apple-touch-icon.png
     iconHeight: 35
 
   # home-info mode
   homeInfoParams:
-    Title: "Hi there"
-    Content: This is where I publish my CTF writeups, resume and contact info
+    Title: "Hi there,"
+    Content: This is where you can find my  CTF writeups, resume and contact info
 
   socialIcons:
-    - name: twitter
-      url: "https://twitter.com/"
-    - name: stackoverflow
-      url: "https://stackoverflow.com"
     - name: github
       url: "https://github.com/doxxedd"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/daniel-dinari/"
+    - name: discord
+      url: "https://dinari.ca/discord"
+    # - name: twitter
+    #   url: "https://twitter.com/ddoxxedd"
 
   cover:
     hidden: true # hide everywhere but not in structured data
@@ -72,12 +74,18 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/doxxedd/dinari.ca/content"
+    URL: "https://github.com/doxxedd/dinari.ca/tree/main/content/"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
   # for search
   # https://fusejs.io/api/options.html
+  outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
+  
   fuseOpts:
     isCaseSensitive: false
     shouldSort: true
@@ -100,6 +108,11 @@ menu:
       name: example.org
       url: https://example.org
       weight: 30
+    - name: Search
+      url: search/
+
+
+
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
