@@ -93,14 +93,14 @@ params:
       url: https://tryhackme.com/p/ddoxxed
     - name: ctftime
       url: "https://ctftime.org/user/154114"
+    - name: twitter
+      url: "https://twitter.com/ddoxxedd"
     - name: discord
-      url: "/about/#discord"
-    # - name: twitter
-    #   url: "https://twitter.com/ddoxxedd"
+      url: "/about/#discord" 
 
   editPost:
     URL: "https://github.com/doxxedd/dinari.ca/tree/main/content/"
-    Text: "Suggest Changes" # edit text
+    Text: "Suggest Edit" # edit text
     appendFilePath: true # to append file path to Edit link
 
   fuseOpts:
