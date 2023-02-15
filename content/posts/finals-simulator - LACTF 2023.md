@@ -16,7 +16,7 @@ Don't you love taking finals? Don't you wish you could do it not only during fin
 
 Connect to it at `nc lac.tf 31132`
 
-[finals_simulator](/lactf/finals_sim/finals_simulator)
+[finals_simulator](/lactf-final-sim/finals_simulator)
 
 ### Writeup
 TODO
