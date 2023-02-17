@@ -4,6 +4,8 @@ draft: false
 searchHidden: true
 ShowToc: false
 ShowReadingTime: false
+disableHLJS: true
+robotsNoIndex: true
 # edit_post: false
 # weight: 1
 ---
