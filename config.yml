@@ -121,7 +121,7 @@ params:
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 markup:
   highlight:
-    lineNos: true
+    # lineNos: true
     style: monokai
     # noClasses: false
     # anchorLineNos: true
