@@ -48,7 +48,7 @@ Upon opening, create a new non-shared project, and then hit `I` to import a file
 
 We can see the `main` function in assembly in the middle, and a decompiled c code on the right (pasted below). Immediately, the questions asked are visible.
 
-```c
+```C
 undefined8 main(void)
 
 {

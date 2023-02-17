@@ -9,7 +9,7 @@ buildFuture: false
 buildExpired: false
 enableInlineShortcodes: true
 enableEmoji: true
-# pygmentsUseClasses: true
+pygmentsUseClasses: true
 
 minify:
   disableXML: true
@@ -121,12 +121,12 @@ params:
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 markup:
   highlight:
-    noClasses: false
     lineNos: true
     style: monokai
+    # noClasses: false
     # anchorLineNos: true
     # codeFences: true
     # guessSyntax: true
-  # goldmark:
-  #   renderer: 
-  #     unsafe: true
+  goldmark:
+    renderer: 
+      unsafe: true
