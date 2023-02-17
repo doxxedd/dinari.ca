@@ -120,13 +120,13 @@ params:
 
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 markup:
-  highlight:
-    # lineNos: true
-    style: monokai
-    # noClasses: false
-    # anchorLineNos: true
-    # codeFences: true
-    # guessSyntax: true
   goldmark:
     renderer: 
       unsafe: true
+  highlight:
+    noClasses: false
+    style: monokai
+    # lineNos: true
+    # anchorLineNos: true
+    # codeFences: true
+    # guessSyntax: true

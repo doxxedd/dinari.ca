@@ -25,7 +25,7 @@ Given file(s): [finals_simulator](/lactf-final-sim/finals_simulator)
 
 We can start off by running the command `file ./finals_simulator` just to see what type of file we're working with here.
 
-```text
+```text {linenos=false}
 ELF 64-bit LSB pie executable, x86-64, ... not stripped
 ```
 
@@ -33,7 +33,7 @@ It's an executable **ELF** file and is **not stripped** meaning it still contain
 
 Let's run the program:
 
-```text
+```text {linenos=false}
 $ ./finals_simulator 
 Welcome to Finals Simulator 2023: Math Edition!
 Question #1: What is sin(x)/n? asd
@@ -48,7 +48,8 @@ Upon opening, create a new non-shared project, and then hit `I` to import a file
 
 We can see the `main` function in assembly in the middle, and a decompiled c code on the right (pasted below). Immediately, the questions asked are visible.
 
-```C
+
+```c
 undefined8 main(void)
 
 {
@@ -99,11 +100,15 @@ undefined8 main(void)
   return 0;
 }
 ```
+
+#### Question 1
 On line 16, there is a `strcmp()` which will set `iVar1` to `0` if the `local_118` is the same as **`six`**. There is our 1st answer, but lets also rename `local_118` to `input` so we can read the code better. (Do this by selecting the text and hitting `L`)
 
+#### Question 2
 On line 21, we can see `local_11c` is being read and with some operations must equal `0x2179556a`. When it does, we see the next question. Right clicking these hex values reveals the decimals. All we have to do here is find x:
 `((x + 88) * 42 == 561599850)` which is **`13371337`**
 
+#### Question 3
 The next
 
 ## Solve.py
@@ -111,4 +116,4 @@ The next
 ## Flag
 
 ---
-Just wanna end off by saying thank you for reading this, it was my first writeup so, please suggest edits (top of the page).
+Just wanna end off by saying thank you for reading this, it was my first writeup and my entire inspiration to setup this website and do this writeup was thanks to [LACTF](https://lactf.uclaacm.com/) and [Boschko](https://boschko.ca/). Please suggest edits (top of the page).
