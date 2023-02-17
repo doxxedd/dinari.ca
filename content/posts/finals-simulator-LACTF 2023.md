@@ -57,7 +57,7 @@ undefined8 main(void)
   size_t sVar2;
   int local_11c;
   char input [264];
-  char *local_10;
+  char *i;
   
   puts("Welcome to Finals Simulator 2023: Math Edition!");
   printf("Question #1: What is sin(x)/n? ");
@@ -77,8 +77,8 @@ undefined8 main(void)
       fgets(input,0x100,stdin);
       sVar2 = strcspn(input,"\n");
       input[sVar2] = '\0';
-      for (local_10 = input; *local_10 != '\0'; local_10 = local_10 + 1) {
-        *local_10 = (char)((long)(*local_10 * 0x11) % 0xfd);
+      for (i = input; *i != '\0'; i = i + 1) {
+        *i = (char)((long)(*i * 0x11) % 0xfd);
       }
       putchar(10);
       iVar1 = strcmp(input,enc);
@@ -102,14 +102,22 @@ undefined8 main(void)
 ```
 
 #### Question 1
-On line 16, there is a `strcmp()` which will set `iVar1` to `0` if the `local_118` is the same as **`six`**. There is our 1st answer, but lets also rename `local_118` to `input` so we can read the code better. (Do this by selecting the text and hitting `L`)
+Line 16: there is a `strcmp()` which will set `iVar1` to `0` if the `local_118` is the same as **`six`**. There is our 1st answer, but lets also rename `local_118 -> input` (already applied above) so we can read the code better. (Select the text and hit `L` to rename)
 
 #### Question 2
-On line 21, we can see `local_11c` is being read and with some operations must equal `0x2179556a`. When it does, we see the next question. Right clicking these hex values reveals the decimals. All we have to do here is find x:
-`((x + 88) * 42 == 561599850)` which is **`13371337`**
+Line 21: we can see `local_11c` is being read and with some operations must equal `0x2179556a`. When it does, we see the next question. Right clicking these hex values reveals the decimals. 
+
+All we have to do here is find x: `((x + 88) * 42 == 561599850)` which is **`13371337`**
 
 #### Question 3
-The next
+Let's look at the for loop on line 28. The counter seems to be `local_10` since `+1` is being added to it after iteration. Rename `local_10 -> i` (already applied above). So, the loop is basically iterating through all characters of input (notice `i = input`).
+
+Inside the loop, the chars of our input is being encoded with various operations. Line 32: This encoded input now is being checked against `enc` and if they match, the `printflag()` reads a txt file containing the flag on the server (remember we connect to the server to get the flag).
+
+Let's take a look at `enc` (double click it in the decompiler view):
+![name](/lactf-final-sim/2023-02-17_02-54-31.png#center)
+
+Looks like some sort of a hex array. We have to decode this based on line 29.
 
 ## Solve.py
 

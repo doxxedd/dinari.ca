@@ -122,11 +122,11 @@ params:
 markup:
   highlight:
     style: monokai
-#     noClasses: false
-#     codeFences: true
-#     guessSyntax: true
-#   # goldmark:
+  # noClasses: false TODO: TEST THIS OFF
+  #   codeFences: true
+  #   guessSyntax: true
+  # goldman:
   #   renderer: 
   #     unsafe: true
-    # lineNos: true
-    # anchorLineNos: true
+  #   lineNos: true
+  #   anchorLineNos: true
