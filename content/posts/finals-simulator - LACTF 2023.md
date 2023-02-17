@@ -2,7 +2,7 @@
 title: "finals-simulator (LACTF 2023)"
 summary: "Easy Reverse Engineering Challenge - my first write up!"
 description: "Easy Reverse Engineering Challenge"
-tags: [Reverse Engineering, CTF]
+tags: [Reverse Engineering, LACTF2023, CTF, writeup]
 date: 2023-02-16T20:29:33-05:00
 draft: false
 searchHidden: false
@@ -49,7 +49,7 @@ Upon opening, create a new non-shared project, and then hit `I` to import a file
 We can see the `main` function in assembly in the middle, and a decompiled c code on the right (pasted below). Immediately, the questions asked are visible.
 
 
-```c
+```c {linenos=true}
 undefined8 main(void)
 
 {

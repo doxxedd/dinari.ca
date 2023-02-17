@@ -9,11 +9,11 @@ buildFuture: false
 buildExpired: false
 enableInlineShortcodes: true
 enableEmoji: true
-pygmentsUseClasses: true
+pygmentsUseClasses: false
 
 minify:
   disableXML: true
-  # minifyOutput: false
+  minifyOutput: true
 
 menu:
   main:
@@ -73,7 +73,7 @@ params:
     iconHeight: 35
 
   assets:
-      disableHLJS: false
+      disableHLJS: true
       favicon: "favicon/favicon.ico"
       favicon16x16:  "favicon/favicon-16x16.png"
       favicon32x32:  "favicon/favicon-32x32.png"
@@ -120,13 +120,13 @@ params:
 
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 markup:
-  goldmark:
-    renderer: 
-      unsafe: true
+  # goldmark:
+  #   renderer: 
+  #     unsafe: true
   highlight:
     noClasses: false
     style: monokai
+    codeFences: true
+    guessSyntax: true
     # lineNos: true
     # anchorLineNos: true
-    # codeFences: true
-    # guessSyntax: true
