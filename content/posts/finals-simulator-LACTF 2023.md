@@ -40,7 +40,7 @@ Question #1: What is sin(x)/n? asd
 Wrong! You failed.
 ```
 
-Queue up Ghidra! If you are unfamiliar with [Ghidra](https://github.com/NationalSecurityAgency/ghidra/releases), it is a free  decompiler developed by the NSA (yeah the US one).
+Queue up **Ghidra**! If you are unfamiliar with [Ghidra](https://github.com/NationalSecurityAgency/ghidra/releases), it is a free  decompiler developed by the NSA (yeah the US one).
 
 Upon opening, create a new non-shared project, and then hit `I` to import a file. After importing, double click the file and hit analyze. On the left side, locate `Symbol Tree -> Functions  -> main`
 
@@ -117,9 +117,11 @@ Inside the loop, the chars of our input is being encoded with various operations
 Let's take a look at `enc` (double click it in the decompiler view):
 ![name](/lactf-final-sim/2023-02-17_02-54-31.png#center)
 
-Looks like some sort of a hex array. We have to decode this based on line 29.
+Looks like some sort of a hex array. We have to decode this based on line 29. If we feed both the array and the operations to **Z3 Solver**, it can figure out what our correct answer should be (see solve.py).
 
-## Solve.py
+## solve.py
+
+
 
 ## Flag
 
