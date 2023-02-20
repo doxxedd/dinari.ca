@@ -124,6 +124,7 @@ Looks like some sort of a hex array. We have to decode this based on line 29. If
 
 
 ## Flag
+`lactf{im_n0t_qu1t3_sur3_th4ts_h0w_m4th_w0rks_bu7_0k}`
 
 ---
 Just wanna end off by saying thank you for reading this, it was my first writeup and my entire inspiration to setup this website and do this writeup was thanks to [LACTF](https://lactf.uclaacm.com/) and [Boschko](https://boschko.ca/). Please suggest edits (top of the page).

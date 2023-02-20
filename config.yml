@@ -101,6 +101,8 @@ params:
       url: "https://ctftime.org/user/154114"
     - name: twitter
       url: "https://twitter.com/ddoxxedd"
+    # - name: hackthebox
+    #   url: https://app.hackthebox.com/profile/824634
     - name: discord
       url: "/about/#discord" 
 
