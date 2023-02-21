@@ -3,7 +3,7 @@ title: "finals-simulator (LACTF 2023)"
 summary: "Easy Reverse Engineering Challenge - my first write up!"
 description: "Easy Reverse Engineering Challenge"
 tags: [Reverse Engineering, LACTF2023, CTF, writeup]
-date: 2023-02-16T20:29:33-05:00
+date: 2023-02-20T20:29:33-05:00
 draft: false
 searchHidden: false
 ShowToc: true
