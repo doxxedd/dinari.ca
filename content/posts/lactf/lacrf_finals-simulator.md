@@ -44,9 +44,9 @@ Queue up **Ghidra**! If you are unfamiliar with [Ghidra](https://github.com/Nati
 
 Upon opening, create a new non-shared project, and then hit `I` to import a file. After importing, double click the file and hit analyze. On the left side, locate `Symbol Tree -> Functions  -> main`
 
-![name](/lactf-final-sim/2023-02-16_22-17.jpg#center)
+![name](/lactf-final-sim/2023-02-20-22-30-47.png#center)
 
-We can see the `main` function in assembly in the middle, and a decompiled c code on the right (pasted below). Immediately, the questions asked are visible.
+We can see the `main` function in assembly in the middle of the screen, and a decompiled C pseudocode on the right (picture above). Immediately, the questions asked are visible.
 
 
 ```c {linenos=true}
