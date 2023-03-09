@@ -10,7 +10,7 @@ hideMeta: true
 # edit_post: false
 # weight: 1
 ---
-My name is Daniel Dinari and I go by "doxxedd" in the ctf world.
+My name is Daniel Dinari (legally Danial) and I go by "doxxedd" in the ctf world.
 
 I'm a 2nd year undergraduate student in **Queen's University** studying **Computing with a Security focus**. *BComp (Hons)*
 
