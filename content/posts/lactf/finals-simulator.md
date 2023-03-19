@@ -1,8 +1,8 @@
 ---
 title: "finals-simulator (LACTF 2023)"
 summary: "Easy Reverse Engineering Challenge - my first write up!"
-description: "Easy Reverse Engineering Challenge"
-tags: [Reverse Engineering, LACTF2023, CTF, writeup]
+description: "Easy Reverse Engineering Challenge - 267 points"
+tags: [Reverse Engineering, LACTF2023, writeup]
 date: 2023-02-20T20:29:33-05:00
 draft: false
 searchHidden: false
@@ -17,7 +17,7 @@ Don't you love taking finals? Don't you wish you could do it not only during fin
 
 Connect to it at `nc lac.tf 31132`
 
-Given file(s): [finals_simulator](/lactf-final-sim/finals_simulator)
+Given file: [finals_simulator](/lactf-final-sim/finals_simulator)
 
 ---
 
@@ -136,4 +136,7 @@ After entering the answers `(six, 13371337, it's a log cabin!!!)`we get:
 `lactf{im_n0t_qu1t3_sur3_th4ts_h0w_m4th_w0rks_bu7_0k}`
 
 ---
-Just wanna end off by saying thank you for reading this, it was my first writeup and my entire inspiration to setup this website and do this writeup was thanks to [LACTF](https://lactf.uclaacm.com/) and [Boschko](https://boschko.ca/). Please suggest edits (top of the page).
+
+### Personal note
+
+Just wanna end off by saying thank you for reading this, it was my first writeup and my entire inspiration to setup this website and do this writeup was thanks to [LACTF](https://lactf.uclaacm.com/) and [Boschko](https://boschko.ca/).
