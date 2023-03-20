@@ -3,7 +3,7 @@ title: "Cipher Cracking (vikeCTF 2023)"
 summary: "Easy Cryptography Challenge - using CyberChef"
 description: "Easy Cryptography Challenge - 100 points"
 tags: [Cryptography, vikeCTF2023, writeup]
-date: 2023-03-19T10:00:00-05:00
+date: 2023-03-19T18:00:00-05:00
 draft: false
 searchHidden: false
 ShowToc: true
@@ -81,4 +81,5 @@ The strongest suggestions are `Affine Cipher` and `Mono-alphabetic Substitution`
 
 Watchout for some picoCTF and HTB Cyber Apocalypse writeups in the coming days! (and a couple of rev challenges from vike)
 
-I'm a big F1 fan and today's FIA judgement was abysmal (as always), demoting Alonso to 4th place after they took 2hrs to analyze a single jpeg. But Alonso *is* GOATED so he still celebrated his podium
+
+I'm a big F1 fan and today's FIA judgement was abysmal (as always), demoting Alonso to 4th place after they took 2hrs to analyze a single jpeg. But Alonso *is* GOATED so he still celebrated his podium. EDIT: LOOKS LIKE THEY GAVE 3RD BACK TO HIM YAYY!
