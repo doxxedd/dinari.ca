@@ -2,8 +2,8 @@
 title: "Floating Viking Head (vikeCTF 2023)"
 summary: "Easy Reverse Engineering Challenge - using angr"
 description: "Easy Reverse Engineering Challenge - 100 points"
-tags: [Reverse Engineering, vikeCTF2023, writeup]
-date: 2023-03-19T18:02:00-05:00
+tags: [Reverse Engineering, vikeCTF2023, easy, writeup]
+date: 2023-03-19T20:02:00-05:00
 draft: false
 searchHidden: false
 ShowToc: true
@@ -84,7 +84,7 @@ This is a for loop iterating through the chars of our input with `local_10` bein
 
 &nbsp;
 
-Slap all our findings in an angr template or write your own (GIGACHAD move) and run it!
+Slap all our findings in an angr template or write your own (GIGACHAD move) and run it! (just make sure your binary file is in the same folder as the python file)
 
 ```py
 import angr
