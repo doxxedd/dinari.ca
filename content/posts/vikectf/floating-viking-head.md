@@ -26,7 +26,7 @@ Running `file` on our file tells us that it is an unstripped ELF executable. Run
 
 Cool ASCII art, but this shows me that this challenge is a prime candidate for the use of [angr](https://angr.io/). Anytime where the program hits a failure and success point, `angr` could be used to solve for the flag.
 
-Opening Ghidra, and getting to the main method shows us everything we need: the success address, failure address, and base address.
+Opening Ghidra, and looking inside the main method shows us everything we need: the success address, failure address, and base address. Let me explain.
 
 ```c {linenos=true}
 bool main(void)

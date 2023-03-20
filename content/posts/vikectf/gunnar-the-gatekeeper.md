@@ -25,17 +25,17 @@ Start off by running `file` on our file. It is an unstripped ELF executable.
 
 ![name](/vikectf-gunnar-the-gatekeeper/2023-03-20_01-15.png#center)
 
-Well then we're already rickrolled. (These guys are really good at their ASCII art)
+Well then we've already been rickrolled. (These guys are really good at their ASCII art)
 
 But.. this looks like an awful lot like the [previous rev](https://dinari.ca/posts/vikectf/floating-viking-head/) challenge from vikeCTF where I used angr to get the flag. Let's see what Ghidra says.
 
 ![name](/vikectf-gunnar-the-gatekeeper/2023-03-20_01-33.png#center)
 
-Okay let me just `ctrl+c` `ctrl+v` my [solve.py](/vikectf-floating-viking-head/solve.py) from the prev challenge, get the success-fail addresses just like last time, change the file name annnnndd.. oh it doesn't work. It was worth the 2 mins of work anyways.
+Okay let me just `ctrl+c` `ctrl+v` my [solve.py](/vikectf-floating-viking-head/solve.py) from the prev challenge, slap the success-fail addresses in there just like last time, change the file name annnnndd.. oh it doesn't work. It was worth the 2 mins of work anyways.
 
-Let's try another 2 min method (this usually never works). I can see a `printflag()` function that seems to have no parameters.. no server connection..
+Let's try another 2 min method (this usually never works). I can see a `printflag()` function that seems to have no parameters.. no server connection.. all client-sided..
 
-Okay well looking at the function, its all obfuscated, various calls to stacks and other functions.
+Looking inside the function, its all obfuscated, various calls to stacks and other functions.
 
 But what if I just patch the program where on line 30, instead of `if iVar1 == 0` I make it `if iVar1 != 0 `? So change the `JNZ` instruction to `JZ` or in other words, make it so our invalid passphrase reaches the `printflag()` function.
 
