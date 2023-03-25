@@ -43,7 +43,7 @@ params:
   env: production
   title: Daniel Dinari
   description: "dinari.ca"
-  keywords: [Blog, Portfolio, PaperMod]
+  keywords: [Blog, Portfolio, CTF writeups, Cybersecurity]
   # author: Me
   # images: [""]
   DateFormat: "January 2, 2006 "
