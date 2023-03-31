@@ -20,19 +20,22 @@ menu:
     - name: Home
       url: /
       weight: 1
-    - name: About
-      url: about
-      weight: 2
     - name: Resume
       url: resume.pdf
+      weight: 2
+    - name: About
+      url: about
       weight: 3
+    - name: Placements
+      url: placements/
+      weight: 4
     - identifier: tags
       name: Tags
       url: tags/
-      weight: 4
-    - name: Search
-      url: search/
       weight: 5
+    - name: 🔍
+      url: search/
+      weight: 6
 
 outputs:
     home:
@@ -48,7 +51,7 @@ params:
   # images: [""]
   DateFormat: "January 2, 2006 "
   defaultTheme: dark #auto, light
-  disableThemeToggle: false
+  disableThemeToggle: true
   ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: false

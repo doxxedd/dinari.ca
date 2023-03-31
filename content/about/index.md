@@ -20,5 +20,9 @@ I have a lot to learn and I leave my main source of learning to be frequent part
 
 &nbsp;
 
+#### Past CTF [placements](/placements)
+
+&nbsp;
+
 #### Discord 
 Add me, let's chat! `Maple#5139`
