@@ -1,5 +1,5 @@
 ---
-title: "Past CTF placements 🏆"
+title: "Past CTF Placements 🏆"
 draft: false
 searchHidden: false
 ShowToc: false
@@ -25,12 +25,12 @@ CTFTime Team ID: [Inodes](https://ctftime.org/team/214260)
 
 ### [HTB Cyber Apocalypse 2023: The Cursed Mission](https://ctf.hackthebox.com/event/details/cyber-apocalypse-2023-the-cursed-mission-821)
 - **Top 30%** [Scoreboard](https://ctftime.org/event/1889)
-- March 23rd (overlapped with vike and picoCTF)
 - Team name: Inodes
+- March 23rd (overlapped with vike and picoCTF)
 
 ### [vikeCTF 2023](https://ctf.vikesec.ca/)
 - **Top 20%** [Scoreboard](https://ctftime.org/event/1884)
-- My [writeup](/content/posts/vikectf/floating-viking-head.md) **won Best *Unintended***
+- My [writeup](/posts/vikectf/floating-viking-head) **won Best *Unintended***
 - Team name: Inodes
 - March 19th
 
