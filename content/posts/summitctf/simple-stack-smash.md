@@ -4,7 +4,7 @@ summary: "Easy pwn Challenge - using pwndbg"
 description: "Easy pwn Challenge - 100 points"
 tags: [pwn, SummitCTF2023, easy, writeup]
 date: 2023-04-21T22:00:00-05:00
-draft: false
+draft: true
 searchHidden: false
 ShowToc: true
 TocOpen: false
@@ -24,7 +24,9 @@ Given file: [simple-stack-smash](/summitctf-simple-stack-smash/simple-stack-smas
 
 ## Writeup
 
-I'm going to use GDB with the [pwndbg](https://github.com/pwndbg/pwndbg) plugin for this challenge. Run ```gdb <file>```. ELF executable, nothing interesting happens after running and giving an input.
+I'm going to use GDB with the [pwndbg](https://github.com/pwndbg/pwndbg) plugin for this challenge. Run ```gdb <file>```.
+
+
 
 
 ## Flag
