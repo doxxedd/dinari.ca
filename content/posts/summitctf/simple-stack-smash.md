@@ -16,8 +16,6 @@ hidemeta: false
 
 Can you perform a simple stack smash? I hope so, you'll need to in order to reach the summit...
 
-Use `nc 0.cloud.chals.io 24579` to connect
-
 Given file: [simple-stack-smash](/summitctf-simple-stack-smash/simple-stack-smash)
 
 ---
