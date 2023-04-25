@@ -131,5 +131,3 @@ if len(sim_manager.found) > 0:
 ### Personal note
 
 I am by no means an angr expert, but I got the flag using a typical angr template in 5 mins. Mastering angr could mean you would be solving a LOT of rev challanges with ease and I really wanna work towards that. 
-
-Watchout for some picoCTF and HTB Cyber Apocalypse writeups in the coming days! (and another rev challenge from vike)

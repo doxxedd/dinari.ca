@@ -65,6 +65,5 @@ We've successfully finessed the system.
 ---
 
 ### Personal note
-This was probably the easiest rev challenge that I've solved but somehow it was listed as a medium. Oh well
 
-Watchout for some picoCTF and HTB Cyber Apocalypse writeups in the coming days!
+This was probably the easiest rev challenge that I've solved but somehow it was listed as a medium. Oh well

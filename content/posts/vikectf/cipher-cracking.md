@@ -79,7 +79,4 @@ The strongest suggestions are `Affine Cipher` and `Mono-alphabetic Substitution`
 ---
 ### Personal note
 
-Watchout for some picoCTF and HTB Cyber Apocalypse writeups in the coming days! (and a couple of rev challenges from vike)
-
-
 I'm a big F1 fan and today's FIA judgement was abysmal (as always), demoting Alonso to 4th place after they took 2hrs to analyze a single jpeg. But Alonso *is* GOATED so he still celebrated his podium. EDIT: LOOKS LIKE THEY GAVE 3RD BACK TO HIM YAYY!
