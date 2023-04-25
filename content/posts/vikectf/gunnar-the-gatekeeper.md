@@ -1,7 +1,7 @@
 ---
 title: "Gunnar the Gatekeeper (vikeCTF 2023)"
 summary: "Medium Reverse Engineering Challenge - patching"
-description: "Medium Reverse Engineering Challenge - 223 points"
+description: "Medium Reverse Engineering Challenge - patching"
 tags: [Reverse Engineering, medium, writeup]
 date: 2023-03-20T00:00:00-05:00
 draft: false
@@ -14,7 +14,7 @@ hidemeta: false
 
 ## Description
 
-Ah, the mighty Gunnar the Gatekeeper! He welcomes you to his land, but he is unsure if you are worthy to have the sacred flag. Discover the secret to unlock access to this most prized possesion.
+Ah, the mighty Gunnar the Gatekeeper! He welcomes you to his land, but he is unsure if you are worthy to have the sacred flag. Discover the secret to unlock access to this most prized possesion. (223 points)
 
 Given file: [GunnarTheGatekeeper](/vikectf-gunnar-the-gatekeeper/GunnarTheGatekeeper)
 

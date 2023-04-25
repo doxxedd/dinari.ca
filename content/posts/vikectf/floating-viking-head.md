@@ -1,7 +1,7 @@
 ---
 title: "Floating Viking Head (vikeCTF 2023)"
 summary: "Easy Reverse Engineering Challenge - using angr"
-description: "Easy Reverse Engineering Challenge - 100 points"
+description: "Easy Reverse Engineering Challenge - using angr"
 tags: [Reverse Engineering, easy, writeup]
 date: 2023-03-19T20:02:00-05:00
 draft: false
@@ -14,7 +14,7 @@ hidemeta: false
 
 ## Description
 
-Greetings, mere mortal! Are you ready to embark on a journey to unveil the flag and gain the wisdom of the floating Viking head? Harness the power of the oracle's gaze and use his words to guide you towards victory.
+Greetings, mere mortal! Are you ready to embark on a journey to unveil the flag and gain the wisdom of the floating Viking head? Harness the power of the oracle's gaze and use his words to guide you towards victory. (100 points)
 
 Given file: [FloatingVikingHead](/vikectf-floating-viking-head/FloatingVikingHead)
 

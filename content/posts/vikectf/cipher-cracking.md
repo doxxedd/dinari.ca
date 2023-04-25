@@ -1,7 +1,7 @@
 ---
 title: "Cipher Cracking (vikeCTF 2023)"
 summary: "Easy Cryptography Challenge - using CyberChef"
-description: "Easy Cryptography Challenge - 100 points"
+description: "Easy Cryptography Challenge - using CyberChef"
 tags: [Cryptography, easy, writeup]
 date: 2023-03-19T19:00:00-05:00
 draft: false
@@ -14,7 +14,7 @@ hidemeta: false
 
 ## Description
 
-I've been sitting here for days, listening to the radio and writing down dots and dashes. I'm starting to feel like one of those old-timey codebreakers, you know? To be honest, I have no idea what it all means! Think you can help me out?
+I've been sitting here for days, listening to the radio and writing down dots and dashes. I'm starting to feel like one of those old-timey codebreakers, you know? To be honest, I have no idea what it all means! Think you can help me out? (100 points)
 
 Given file: [1N73rC3P710N.enc](/vikectf-cipher-cracking/1N73rC3P710N.enc)
 

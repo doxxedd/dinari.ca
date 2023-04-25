@@ -1,7 +1,7 @@
 ---
 title: "finals-simulator (LACTF 2023)"
 summary: "Easy Reverse Engineering Challenge - my first write up!"
-description: "Easy Reverse Engineering Challenge - 267 points"
+description: "Easy Reverse Engineering Challenge - my first write up!"
 tags: [Reverse Engineering, easy, writeup]
 date: 2023-02-20T20:29:33-05:00
 draft: false
@@ -13,7 +13,7 @@ hidemeta: false
 ---
 
 ## Description
-Don't you love taking finals? Don't you wish you could do it not only during finals week, but during every week? Fret no more, Finals Simulator 2023 has got your back! If you install now and get an A+ on your simulated final, you'll even get the limited time Flag DLC for free! Also, after numerous reports of cheating we've installed an anti-cheating mechanism so people actually have to solve the problem.
+Don't you love taking finals? Don't you wish you could do it not only during finals week, but during every week? Fret no more, Finals Simulator 2023 has got your back! If you install now and get an A+ on your simulated final, you'll even get the limited time Flag DLC for free! Also, after numerous reports of cheating we've installed an anti-cheating mechanism so people actually have to solve the problem. (267 points)
 
 Given file: [finals_simulator](/lactf-final-sim/finals_simulator)
 

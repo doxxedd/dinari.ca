@@ -1,8 +1,8 @@
 ---
 title: "Simple Stack Smash (SummitCTF 2023)"
 summary: "Easy pwn Challenge - ret2win"
-description: "Easy pwn Challenge - 100 points"
-tags: [pwn, easy, writeup]
+description: "Easy pwn Challenge - ret2win"
+tags: [PWN, easy, writeup]
 date: 2023-04-23T22:00:00-05:00
 draft: false
 searchHidden: false
@@ -14,7 +14,7 @@ hidemeta: false
 
 ## Description
 
-Can you perform a simple stack smash? I hope so, you'll need to in order to reach the summit...
+Can you perform a simple stack smash? I hope so, you'll need to in order to reach the summit... (100 points)
 
 Given file: [simple-stack-smash](/summitctf-simple-stack-smash/simple-stack-smash)
 
