@@ -2,7 +2,7 @@
 title: "finals-simulator (LACTF 2023)"
 summary: "Easy Reverse Engineering Challenge - my first write up!"
 description: "Easy Reverse Engineering Challenge - 267 points"
-tags: [Reverse Engineering, LACTF2023, easy, writeup]
+tags: [Reverse Engineering, easy, writeup]
 date: 2023-02-20T20:29:33-05:00
 draft: false
 searchHidden: false

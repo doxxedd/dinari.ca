@@ -2,7 +2,7 @@
 title: "Floating Viking Head (vikeCTF 2023)"
 summary: "Easy Reverse Engineering Challenge - using angr"
 description: "Easy Reverse Engineering Challenge - 100 points"
-tags: [Reverse Engineering, vikeCTF2023, easy, writeup]
+tags: [Reverse Engineering, easy, writeup]
 date: 2023-03-19T20:02:00-05:00
 draft: false
 searchHidden: false
