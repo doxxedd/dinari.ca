@@ -11,11 +11,11 @@ hideMeta: true
 # weight: 1
 ---
 
+CTFTime Team ID: [Inodes](https://ctftime.org/team/214260)
+
 CTFTime ID: [doxxedd](https://ctftime.org/user/154114)
 
 TryHackMe ID: [ddoxxed](https://tryhackme.com/p/ddoxxed)
-
-CTFTime Team ID: [Inodes](https://ctftime.org/team/214260)
 
 ---
 
