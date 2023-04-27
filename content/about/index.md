@@ -12,7 +12,7 @@ hideMeta: true
 ---
 My name is Daniel Dinari (legally Danial) and I go by "doxxedd" in the CTF world.
 
-I'm an incoming 3rd-year undergraduate student at **Queen's University** studying **Computing with a Security focus**. *BComp (Hons)*
+I'm an incoming **3rd-year** undergraduate student at **Queen's University** studying **Computing** with a **Security focus**. *Bachelor of Computing (Honours)*
 
 I have an extreme passion for cybersecurity and love doing CTFs. I aspire to be a penetration tester in the future but for now, I look for junior cybersecurity internships every summer.
 
