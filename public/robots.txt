@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /resume.pdf
+
+User-agent: CCBot
+Disallow: /
