@@ -10,7 +10,7 @@ hideMeta: true
 # edit_post: false
 # weight: 1
 ---
-My name is Daniel Dinari (legally Danial) and I go by "doxxedd" in the CTF world.
+My name is Daniel Dinari and I go by "doxxedd" in the CTF world.
 
 I'm an incoming **3rd-year** undergraduate student at **Queen's University** studying **Computing** with a **Security focus**. *Bachelor of Computing (Honours)*
 
