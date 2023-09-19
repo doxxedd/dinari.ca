@@ -30,4 +30,4 @@ I fly FPV drones in my pastime and go by "MapleFPV" in the drone world! [YouTube
 ---
 
 #### Discord 
-Add me, let's chat! `Maple#5139`
+Add me, let's chat! `maple107`
