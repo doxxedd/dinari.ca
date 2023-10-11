@@ -23,11 +23,11 @@ menu:
     - name: Resume
       url: resume.pdf
       weight: 2
+    - name: Rankings
+      url: placements/
+      weight: 3
     - name: About
       url: about
-      weight: 3
-    - name: Placements
-      url: placements/
       weight: 4
     - identifier: tags
       name: Tags
