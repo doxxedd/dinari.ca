@@ -10,7 +10,7 @@ hideMeta: true
 # edit_post: false
 # weight: 1
 ---
-My name is Daniel Dinari (legally Danial) and I go by "doxxedd" in the CTF world.
+My name is Daniel Dinari and I go by "doxxedd" in the CTF world.
 
 I'm a **3rd-year** undergraduate student at **Queen's University** studying **Computing** with a **Security focus**. *Bachelor of Computing (Honours)*
 
@@ -30,4 +30,4 @@ I fly FPV drones in my pastime and go by "MapleFPV" in the drone world! [YouTube
 ---
 
 #### Discord 
-Add me, let's chat! `Maple#5139`
+Add me, let's chat! `maple107`
