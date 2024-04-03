@@ -26,33 +26,33 @@ picoCTF: [doxxedd](https://play.picoctf.org/users/doxxedd)
 ### [QCTF 2024](https://qctf.ca/)
 - **1st in Queen's / 4th Overall**
 - Team: Inodes
-- March 31st, 2024
+- Mar 31st, 2024
 
 ### [picoCTF 2024](https://play.picoctf.org/events/73/)
 - **Top 6% globally / 412th**: [Scoreboard](https://play.picoctf.org/events/73/scoreboards#3455)
 - Team: Inodes
-- March 12-26, 2024
+- Mar 12-26, 2024
 
 ### [SummitCTF 2023](https://summitctf.org/)
 - **Top 19% / 20th**: [Scoreboard](https://ctftime.org/event/1862)
 - Team: Inodes
-- April 15-16, 2023
+- Apr 15-16, 2023
 
 ### [picoCTF 2023](https://play.picoctf.org/events/72/)
 - **Top 10%** globally and **249th** within undergrad students [Scoreboard](https://play.picoctf.org/events/72/scoreboards#2597)
 - Team: Inodes
-- March 14-28, 2023
+- Mar 14-28, 2023
 
 ### [HTB Cyber Apocalypse 2023: The Cursed Mission](https://ctf.hackthebox.com/event/details/cyber-apocalypse-2023-the-cursed-mission-821)
 - **Top 30%**: [Scoreboard](https://ctftime.org/event/1889)
 - Team: Inodes
-- March 18-23, 2023
+- Mar 18-23, 2023
 
 ### [vikeCTF 2023](https://ctf.vikesec.ca/)
 - **Top 18% / 36th**: [Scoreboard](https://ctftime.org/event/1884)
 - My [writeup](/posts/vikectf/floating-viking-head) **won Best *"Unintended"***
 - Team: Inodes
-- March 17-19, 2023
+- Mar 17-19, 2023
 
 
 ### [LACTF 2023](https://lactf.uclaacm.com/)

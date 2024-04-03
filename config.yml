@@ -49,7 +49,7 @@ params:
   keywords: [Blog, Portfolio, CTF writeups, Cybersecurity]
   # author: Me
   # images: [""]
-  DateFormat: "January 2, 2006 "
+  DateFormat: "Jan 2, 2006 "
   defaultTheme: dark #auto, light
   disableThemeToggle: true
   ShowReadingTime: true
