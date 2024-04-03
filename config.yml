@@ -98,12 +98,14 @@ params:
       url: "https://github.com/doxxedd?tab=repositories"
     - name: linkedin
       url: "https://www.linkedin.com/in/daniel-dinari/"
-    - name: tryhackme
-      url: https://tryhackme.com/p/ddoxxed
     - name: ctftime
       url: "https://ctftime.org/user/154114"
-    - name: twitter
-      url: "https://twitter.com/ddoxxedd"
+    - name: RingZer0
+      url: https://ringzer0ctf.com/profile/44558/doxxedd
+    - name: tryhackme
+      url: https://tryhackme.com/p/ddoxxed
+    # - name: twitter
+    #   url: "https://twitter.com/ddoxxedd"
     # - name: hackthebox
     #   url: https://app.hackthebox.com/profile/824634
     - name: discord
