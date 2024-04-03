@@ -1,5 +1,3 @@
 User-agent: *
-Disallow: /resume.pdf
-
-User-agent: CCBot
-Disallow: /
+Disallow:
+Sitemap: /sitemap.xml

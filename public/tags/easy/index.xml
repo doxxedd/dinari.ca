@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>easy on Daniel Dinari</title>
+    <link>/tags/easy/</link>
+    <description>Recent content in easy on Daniel Dinari</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Apr 2023 22:00:00 -0500</lastBuildDate><atom:link href="/tags/easy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simple Stack Smash (SummitCTF 2023)</title>
+      <link>/posts/summitctf/simple-stack-smash/</link>
+      <pubDate>Sun, 23 Apr 2023 22:00:00 -0500</pubDate>
+      
+      <guid>/posts/summitctf/simple-stack-smash/</guid>
+      <description>Easy pwn Challenge - ret2win</description>
+    </item>
+    
+    <item>
+      <title>Floating Viking Head (vikeCTF 2023)</title>
+      <link>/posts/vikectf/floating-viking-head/</link>
+      <pubDate>Sun, 19 Mar 2023 20:02:00 -0500</pubDate>
+      
+      <guid>/posts/vikectf/floating-viking-head/</guid>
+      <description>Easy Reverse Engineering Challenge - using angr</description>
+    </item>
+    
+    <item>
+      <title>Cipher Cracking (vikeCTF 2023)</title>
+      <link>/posts/vikectf/cipher-cracking/</link>
+      <pubDate>Sun, 19 Mar 2023 19:00:00 -0500</pubDate>
+      
+      <guid>/posts/vikectf/cipher-cracking/</guid>
+      <description>Easy Cryptography Challenge - using CyberChef</description>
+    </item>
+    
+    <item>
+      <title>finals-simulator (LACTF 2023)</title>
+      <link>/posts/lactf/finals-simulator/</link>
+      <pubDate>Mon, 20 Feb 2023 20:29:33 -0500</pubDate>
+      
+      <guid>/posts/lactf/finals-simulator/</guid>
+      <description>Easy Reverse Engineering Challenge - my first write up!</description>
+    </item>
+    
+  </channel>
+</rss>

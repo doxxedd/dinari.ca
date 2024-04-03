@@ -10,13 +10,13 @@
 <meta name="description" content="Search - Daniel Dinari">
 <meta name="author" content="">
 <link rel="canonical" href="/search/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.47f47d4aa22ba322f5166bf2abfc030ac8a22fc2703f5c7317b84bde4cac75be.css" integrity="sha256-R/R9SqIroyL1Fmvyq/wDCsiiL8JwP1xzF7hL3kysdb4=" rel="preload stylesheet" as="style"><link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
-<script defer crossorigin="anonymous" src="/assets/js/search.4fd4885084ffc553d7ea822cf3a0153cce67663d9432d059bb8cce8d70428079.js" integrity="sha256-T9SIUIT/xVPX6oIs86AVPM5nZj2UMtBZu4zOjXBCgHk="></script>
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.7d18a705987f821ebb81c2a2b7c2108153c651bb559a2625a1793adca536f83f.css" integrity="sha256-fRinBZh/gh67gcKit8IQgVPGUbtVmiYloXk63KU2&#43;D8=" rel="preload stylesheet" as="style"><link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
+<script defer crossorigin="anonymous" src="/assets/js/search.0242067fc57e69a9cb0c0e6a36644c9f47549ca1c83d2adcc73bd0fa5e38fb4a.js" integrity="sha256-AkIGf8V&#43;aanLDA5qNmRMn0dUnKHIPSrcxzvQ&#43;l44&#43;0o="></script>
+<link rel="icon" href="/favicon/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -27,7 +27,17 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Search" />
+</noscript>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4NJWQRTX5H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4NJWQRTX5H');
+</script>
+<meta property="og:title" content="Search" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/search/" /><meta property="article:section" content="" />
@@ -77,7 +87,7 @@
     "name": "Daniel Dinari",
     "logo": {
       "@type": "ImageObject",
-      "url": "/favicon.ico"
+      "url": "/favicon/favicon.ico"
     }
   }
 }
@@ -85,38 +95,14 @@
 </head>
 
 <body class="list dark" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    }
-
-</script>
 
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="/" accesskey="h" title="Daniel Dinari (Alt + H)">Daniel Dinari</a>
+            <a href="/" accesskey="h" title="Daniel Dinari  (Alt + H)">
+                <img src="/clueless.png" alt="" aria-label="logo"
+                    height="34">Daniel Dinari </a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
             </div>
         </div>
         <ul id="menu">
@@ -126,13 +112,18 @@
                 </a>
             </li>
             <li>
-                <a href="/about" title="About">
-                    <span>About</span>
+                <a href="/resume.pdf" title="Resume">
+                    <span>Resume</span>
                 </a>
             </li>
             <li>
-                <a href="/resume.pdf" title="Resume">
-                    <span>Resume</span>
+                <a href="/placements/" title="Rankings">
+                    <span>Rankings</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about" title="About">
+                    <span>About</span>
                 </a>
             </li>
             <li>
@@ -141,8 +132,8 @@
                 </a>
             </li>
             <li>
-                <a href="/search/" title="Search (Alt &#43; /)" accesskey=/>
-                    <span class="active">Search</span>
+                <a href="/search/" title="🔍">
+                    <span class="active">🔍</span>
                 </a>
             </li>
         </ul>
@@ -167,10 +158,6 @@
 </div>
     </main>
     
-<footer class="footer">
-    <span>&copy; 2023 <a href="/">Daniel Dinari</a></span>
-    
-</footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
@@ -217,18 +204,6 @@
             mybutton.style.opacity = "0";
         }
     };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
 
 </script>
 </body>
