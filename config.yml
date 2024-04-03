@@ -73,7 +73,7 @@ params:
   label:
     text: "Daniel Dinari "
     icon: "clueless.png"
-    iconHeight: 34
+    iconHeight: 40
 
   assets:
       disableHLJS: false
