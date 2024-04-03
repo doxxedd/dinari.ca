@@ -14,7 +14,7 @@ My name is Daniel Dinari and I go by "doxxedd" in the CTF world.
 
 I'm a **3rd-year** undergraduate student at **Queen's University** studying **Computing** with a **Security focus**. *Bachelor of Computing (Honours)*
 
-I have an extreme passion for cybersecurity and love doing CTFs. I aspire to be a penetration tester in the future.
+I have an extreme passion for cybersecurity and love doing CTFs and aspire to be a penetration tester in the future.
 
 This May, I'll be a Cybersecurity Consultant Intern at [**IBM**](https://www.ibm.com/ca-en) for 12 Months. 
 
