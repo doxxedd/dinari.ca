@@ -4,7 +4,7 @@ summary: "Easy pwn chal - format string vuln"
 description: "Easy pwn chal - format string vuln"
 tags: [pwn, easy, writeup]
 date: 2023-04-23T22:00:00-05:00
-draft: false
+draft: true
 searchHidden: false
 ShowToc: true
 TocOpen: false
@@ -22,6 +22,7 @@ Given files: [format-string-1](/picoctf-format-string-1/format-string-1) [format
 
 ## Writeup
 
+The first 
 
 
 ### Solve script
