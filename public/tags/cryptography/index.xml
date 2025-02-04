@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cryptography on Daniel Dinari</title>
+    <link>//localhost:1313/tags/cryptography/</link>
+    <description>Recent content in Cryptography on Daniel Dinari</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 19 Mar 2023 19:00:00 -0500</lastBuildDate><atom:link href="//localhost:1313/tags/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cipher Cracking (vikeCTF 2023)</title>
+      <link>//localhost:1313/posts/vikectf/cipher-cracking/</link>
+      <pubDate>Sun, 19 Mar 2023 19:00:00 -0500</pubDate>
+      
+      <guid>//localhost:1313/posts/vikectf/cipher-cracking/</guid>
+      <description>Easy Cryptography Challenge - using CyberChef</description>
+    </item>
+    
+  </channel>
+</rss>
