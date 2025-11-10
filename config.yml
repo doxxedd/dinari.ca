@@ -91,7 +91,7 @@ params:
       My name is Daniel Dinari and I'm an undergrad student at 
       **Queen's University** studying **Computing**, with a **Security** focus.
       Here I post CTF writeups, my [resume](/resume.pdf), past [CTF rankings](/placements) and 
-      contact info.
+      [more](/about).
 
   socialIcons:
     - name: github
@@ -109,7 +109,7 @@ params:
     # - name: hackthebox
     #   url: https://app.hackthebox.com/profile/824634
     - name: discord
-      url: "/about/#discord" 
+      url: "https://discord.com/users/maple107"
 
   editPost:
     URL: "https://github.com/doxxedd/dinari.ca/tree/main/content"
