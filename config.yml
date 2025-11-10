@@ -129,11 +129,11 @@ params:
 markup:
   highlight:
     style: monokai
+  goldman:
+    renderer: 
+      unsafe: true
+    lineNos: true
+    anchorLineNos: true
   # noClasses: false TODO: TEST THIS OFF
   #   codeFences: true
   #   guessSyntax: true
-  # goldman:
-  #   renderer: 
-  #     unsafe: true
-  #   lineNos: true
-  #   anchorLineNos: true
