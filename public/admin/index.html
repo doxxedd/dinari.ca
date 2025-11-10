@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="dark">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +7,10 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Admin Panel | Daniel Dinari</title>
 <meta name="keywords" content="">
-<meta name="description" content="wow, you found my secret admin page ">
+<meta name="description" content="wow, you found my secret admin page">
 <meta name="author" content="">
 <link rel="canonical" href="//localhost:1313/admin/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.7d18a705987f821ebb81c2a2b7c2108153c651bb559a2625a1793adca536f83f.css" integrity="sha256-fRinBZh/gh67gcKit8IQgVPGUbtVmiYloXk63KU2&#43;D8=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4730c9e45f9f0b7b07fa43952181b08deadd3d68d39ac8dd76404e0b295e8dd4.css" integrity="sha256-RzDJ5F&#43;fC3sH&#43;kOVIYGwjerdPWjTmsjddkBOCylejdQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="//localhost:1313/favicon/favicon1.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon/favicon-32x32.png">
@@ -39,16 +37,15 @@
 
   gtag('config', 'G-4NJWQRTX5H');
 </script>
-<meta property="og:title" content="Admin Panel" />
-<meta property="og:description" content="wow, you found my secret admin page " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="//localhost:1313/admin/" /><meta property="article:section" content="" />
-
-<meta property="og:site_name" content="Daniel Dinari" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Admin Panel"/>
-<meta name="twitter:description" content="wow, you found my secret admin page "/>
+<meta property="og:url" content="//localhost:1313/admin/">
+  <meta property="og:site_name" content="Daniel Dinari">
+  <meta property="og:title" content="Admin Panel">
+  <meta property="og:description" content="wow, you found my secret admin page">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Admin Panel">
+<meta name="twitter:description" content="wow, you found my secret admin page">
 
 
 <script type="application/ld+json">
@@ -71,7 +68,7 @@
   "@type": "BlogPosting",
   "headline": "Admin Panel",
   "name": "Admin Panel",
-  "description": "wow, you found my secret admin page ",
+  "description": "wow, you found my secret admin page",
   "keywords": [
     
   ],
@@ -95,18 +92,14 @@
 }
 </script>
 </head>
-
-<body class=" dark" id="top">
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="//localhost:1313/" accesskey="h" title="Daniel Dinari  (Alt + H)">
                 <img src="//localhost:1313/clueless.png" alt="" aria-label="logo"
                     height="40">Daniel Dinari </a>
             <div class="logo-switches">
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -148,11 +141,11 @@
 <article class="post-single">
   <header class="post-header">
     <div class="breadcrumbs"><a href="//localhost:1313/">Home</a></div>
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       Admin Panel
     </h1>
   </header> 
-  <div class="post-content"><h2 id="wow-you-found-my-secrethttpswwwyoutubecomwatchvdqw4w9wgxcq-admin-page">wow, you found my <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">secret</a> admin page<a hidden class="anchor" aria-hidden="true" href="#wow-you-found-my-secrethttpswwwyoutubecomwatchvdqw4w9wgxcq-admin-page">#</a></h2>
+  <div class="post-content"><h2 id="wow-you-found-my-secret-admin-page">wow, you found my <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">secret</a> admin page<a hidden class="anchor" aria-hidden="true" href="#wow-you-found-my-secret-admin-page">#</a></h2>
 
 
   </div>
@@ -171,9 +164,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }

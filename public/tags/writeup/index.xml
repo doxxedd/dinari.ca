@@ -4,53 +4,44 @@
     <title>Writeup on Daniel Dinari</title>
     <link>//localhost:1313/tags/writeup/</link>
     <description>Recent content in Writeup on Daniel Dinari</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Apr 2023 22:00:00 -0500</lastBuildDate><atom:link href="//localhost:1313/tags/writeup/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Apr 2023 22:00:00 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/writeup/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Simple Stack Smash (SummitCTF 2023)</title>
       <link>//localhost:1313/posts/summitctf/simple-stack-smash/</link>
       <pubDate>Sun, 23 Apr 2023 22:00:00 -0500</pubDate>
-      
       <guid>//localhost:1313/posts/summitctf/simple-stack-smash/</guid>
       <description>Easy pwn Challenge - ret2win</description>
     </item>
-    
     <item>
       <title>Gunnar the Gatekeeper (vikeCTF 2023)</title>
       <link>//localhost:1313/posts/vikectf/gunnar-the-gatekeeper/</link>
       <pubDate>Mon, 20 Mar 2023 00:00:00 -0500</pubDate>
-      
       <guid>//localhost:1313/posts/vikectf/gunnar-the-gatekeeper/</guid>
       <description>Medium Reverse Engineering Challenge - patching</description>
     </item>
-    
     <item>
       <title>Floating Viking Head (vikeCTF 2023)</title>
       <link>//localhost:1313/posts/vikectf/floating-viking-head/</link>
       <pubDate>Sun, 19 Mar 2023 20:02:00 -0500</pubDate>
-      
       <guid>//localhost:1313/posts/vikectf/floating-viking-head/</guid>
       <description>Easy Reverse Engineering Challenge - using angr</description>
     </item>
-    
     <item>
       <title>Cipher Cracking (vikeCTF 2023)</title>
       <link>//localhost:1313/posts/vikectf/cipher-cracking/</link>
       <pubDate>Sun, 19 Mar 2023 19:00:00 -0500</pubDate>
-      
       <guid>//localhost:1313/posts/vikectf/cipher-cracking/</guid>
       <description>Easy Cryptography Challenge - using CyberChef</description>
     </item>
-    
     <item>
       <title>finals-simulator (LACTF 2023)</title>
       <link>//localhost:1313/posts/lactf/finals-simulator/</link>
       <pubDate>Mon, 20 Feb 2023 20:29:33 -0500</pubDate>
-      
       <guid>//localhost:1313/posts/lactf/finals-simulator/</guid>
       <description>Easy Reverse Engineering Challenge - my first write up!</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,17 +4,16 @@
     <title>Medium on Daniel Dinari</title>
     <link>//localhost:1313/tags/medium/</link>
     <description>Recent content in Medium on Daniel Dinari</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Mar 2023 00:00:00 -0500</lastBuildDate><atom:link href="//localhost:1313/tags/medium/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Mar 2023 00:00:00 -0500</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/medium/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gunnar the Gatekeeper (vikeCTF 2023)</title>
       <link>//localhost:1313/posts/vikectf/gunnar-the-gatekeeper/</link>
       <pubDate>Mon, 20 Mar 2023 00:00:00 -0500</pubDate>
-      
       <guid>//localhost:1313/posts/vikectf/gunnar-the-gatekeeper/</guid>
       <description>Medium Reverse Engineering Challenge - patching</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="dark">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 <meta name="description" content="dinari.ca">
 <meta name="author" content="">
 <link rel="canonical" href="//localhost:1313/tags/pwn/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.7d18a705987f821ebb81c2a2b7c2108153c651bb559a2625a1793adca536f83f.css" integrity="sha256-fRinBZh/gh67gcKit8IQgVPGUbtVmiYloXk63KU2&#43;D8=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4730c9e45f9f0b7b07fa43952181b08deadd3d68d39ac8dd76404e0b295e8dd4.css" integrity="sha256-RzDJ5F&#43;fC3sH&#43;kOVIYGwjerdPWjTmsjddkBOCylejdQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="//localhost:1313/favicon/favicon1.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon/favicon-32x32.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="//localhost:1313/favicon/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="//localhost:1313/tags/pwn/index.xml">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/tags/pwn/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="//localhost:1313/tags/pwn/">
 <noscript>
     <style>
@@ -38,28 +38,25 @@
 
   gtag('config', 'G-4NJWQRTX5H');
 </script>
-<meta property="og:title" content="Pwn" />
-<meta property="og:description" content="dinari.ca" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="//localhost:1313/tags/pwn/" /><meta property="og:site_name" content="Daniel Dinari" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Pwn"/>
-<meta name="twitter:description" content="dinari.ca"/>
+<meta property="og:url" content="//localhost:1313/tags/pwn/">
+  <meta property="og:site_name" content="Daniel Dinari">
+  <meta property="og:title" content="Pwn">
+  <meta property="og:description" content="dinari.ca">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pwn">
+<meta name="twitter:description" content="dinari.ca">
 
 </head>
-
-<body class="list dark" id="top">
-
-<header class="header">
+<body class="list" id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="//localhost:1313/" accesskey="h" title="Daniel Dinari  (Alt + H)">
                 <img src="//localhost:1313/clueless.png" alt="" aria-label="logo"
                     height="40">Daniel Dinari </a>
             <div class="logo-switches">
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -105,13 +102,13 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>Simple Stack Smash (SummitCTF 2023)
+    <h2 class="entry-hint-parent">Simple Stack Smash (SummitCTF 2023)
     </h2>
   </header>
   <div class="entry-content">
     <p>Easy pwn Challenge - ret2win</p>
   </div>
-  <footer class="entry-footer">&lt;span title=&#39;2023-04-23 22:00:00 -0500 -0500&#39;&gt;Apr 23, 2023 &lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 min</footer>
+  <footer class="entry-footer"><span title='2023-04-23 22:00:00 -0500 -0500'>Apr 23, 2023 </span>&nbsp;·&nbsp;<span>2 min</span></footer>
   <a class="entry-link" aria-label="post link to Simple Stack Smash (SummitCTF 2023)" href="//localhost:1313/posts/summitctf/simple-stack-smash/"></a>
 </article>
     </main>
@@ -123,9 +120,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }

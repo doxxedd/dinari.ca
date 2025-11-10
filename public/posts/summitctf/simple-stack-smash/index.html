@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="dark">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +10,7 @@
 <meta name="description" content="Easy pwn Challenge - ret2win">
 <meta name="author" content="">
 <link rel="canonical" href="//localhost:1313/posts/summitctf/simple-stack-smash/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.7d18a705987f821ebb81c2a2b7c2108153c651bb559a2625a1793adca536f83f.css" integrity="sha256-fRinBZh/gh67gcKit8IQgVPGUbtVmiYloXk63KU2&#43;D8=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4730c9e45f9f0b7b07fa43952181b08deadd3d68d39ac8dd76404e0b295e8dd4.css" integrity="sha256-RzDJ5F&#43;fC3sH&#43;kOVIYGwjerdPWjTmsjddkBOCylejdQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="//localhost:1313/favicon/favicon1.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon/favicon-32x32.png">
@@ -39,16 +37,21 @@
 
   gtag('config', 'G-4NJWQRTX5H');
 </script>
-<meta property="og:title" content="Simple Stack Smash (SummitCTF 2023)" />
-<meta property="og:description" content="Easy pwn Challenge - ret2win" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="//localhost:1313/posts/summitctf/simple-stack-smash/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-23T22:00:00-05:00" />
-<meta property="article:modified_time" content="2023-04-23T22:00:00-05:00" /><meta property="og:site_name" content="Daniel Dinari" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Simple Stack Smash (SummitCTF 2023)"/>
-<meta name="twitter:description" content="Easy pwn Challenge - ret2win"/>
+<meta property="og:url" content="//localhost:1313/posts/summitctf/simple-stack-smash/">
+  <meta property="og:site_name" content="Daniel Dinari">
+  <meta property="og:title" content="Simple Stack Smash (SummitCTF 2023)">
+  <meta property="og:description" content="Easy pwn Challenge - ret2win">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-04-23T22:00:00-05:00">
+    <meta property="article:modified_time" content="2023-04-23T22:00:00-05:00">
+    <meta property="article:tag" content="Pwn">
+    <meta property="article:tag" content="Easy">
+    <meta property="article:tag" content="Writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple Stack Smash (SummitCTF 2023)">
+<meta name="twitter:description" content="Easy pwn Challenge - ret2win">
 
 
 <script type="application/ld+json">
@@ -101,18 +104,14 @@
 }
 </script>
 </head>
-
-<body class=" dark" id="top">
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="//localhost:1313/" accesskey="h" title="Daniel Dinari  (Alt + H)">
                 <img src="//localhost:1313/clueless.png" alt="" aria-label="logo"
                     height="40">Daniel Dinari </a>
             <div class="logo-switches">
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -154,13 +153,15 @@
 <article class="post-single">
   <header class="post-header">
     <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       Simple Stack Smash (SummitCTF 2023)
     </h1>
     <div class="post-description">
       Easy pwn Challenge - ret2win
     </div>
-    <div class="post-meta">&lt;span title=&#39;2023-04-23 22:00:00 -0500 -0500&#39;&gt;Apr 23, 2023 &lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 min&nbsp;|&nbsp;<a href="https://github.com/doxxedd/dinari.ca/tree/main/content/posts/summitctf/simple-stack-smash.md" rel="noopener noreferrer" target="_blank">Suggest Edit</a>
+    <div class="post-meta"><span title='2023-04-23 22:00:00 -0500 -0500'>Apr 23, 2023 </span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/doxxedd/dinari.ca/tree/main/content/posts/summitctf/simple-stack-smash.md" rel="noopener noreferrer edit" target="_blank">Suggest Edit</a>
+</span>
 
 </div>
   </header> <div class="toc">
@@ -192,8 +193,7 @@
 <hr>
 <h2 id="writeup">Writeup<a hidden class="anchor" aria-hidden="true" href="#writeup">#</a></h2>
 <p>I&rsquo;m going to use GDB with the <a href="https://github.com/pwndbg/pwndbg">pwndbg</a> plugin for this challenge. Run <code>gdb &lt;file&gt;</code></p>
-<p><img loading="lazy" src="/summitctf-simple-stack-smash/2023-04-23-21-44-48.png#center" alt="name"  />
-</p>
+<p><img alt="name" loading="lazy" src="/summitctf-simple-stack-smash/2023-04-23-21-44-48.png#center"></p>
 <p>Here is the main function revealed in Ghidra:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>undefined4 <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
 </span></span><span style="display:flex;"><span>{
@@ -232,8 +232,7 @@
 </span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>interactive()  
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># run script, enter &#39;c&#39; in gdb to continue</span>
 </span></span></code></pre></div><p>We can see in gdb that the program SEGFAULTed when it&rsquo;s <code>%EIP</code> was pointing to &lsquo;gaaa&rsquo; which caused the buffer overflow. If you&rsquo;re unfamiliar with assembly registers, <code>%EIP</code> is the instruction pointer which tells the computer what the next command is that must be executed. After making <code>%EIP</code> to point to our win function, we get the flag.</p>
-<p><img loading="lazy" src="/summitctf-simple-stack-smash/2023-04-23-23-04.png#center" alt="name"  />
-</p>
+<p><img alt="name" loading="lazy" src="/summitctf-simple-stack-smash/2023-04-23-23-04.png#center"></p>
 <p> </p>
 <h3 id="solve-script">Solve script<a hidden class="anchor" aria-hidden="true" href="#solve-script">#</a></h3>
 <p>Completing the script:</p>
@@ -279,9 +278,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="dark">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +10,7 @@
 <meta name="description" content="Easy Reverse Engineering Challenge - using angr">
 <meta name="author" content="">
 <link rel="canonical" href="//localhost:1313/posts/vikectf/floating-viking-head/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.7d18a705987f821ebb81c2a2b7c2108153c651bb559a2625a1793adca536f83f.css" integrity="sha256-fRinBZh/gh67gcKit8IQgVPGUbtVmiYloXk63KU2&#43;D8=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4730c9e45f9f0b7b07fa43952181b08deadd3d68d39ac8dd76404e0b295e8dd4.css" integrity="sha256-RzDJ5F&#43;fC3sH&#43;kOVIYGwjerdPWjTmsjddkBOCylejdQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="//localhost:1313/favicon/favicon1.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon/favicon-32x32.png">
@@ -39,16 +37,21 @@
 
   gtag('config', 'G-4NJWQRTX5H');
 </script>
-<meta property="og:title" content="Floating Viking Head (vikeCTF 2023)" />
-<meta property="og:description" content="Easy Reverse Engineering Challenge - using angr" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="//localhost:1313/posts/vikectf/floating-viking-head/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-19T20:02:00-05:00" />
-<meta property="article:modified_time" content="2023-03-19T20:02:00-05:00" /><meta property="og:site_name" content="Daniel Dinari" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Floating Viking Head (vikeCTF 2023)"/>
-<meta name="twitter:description" content="Easy Reverse Engineering Challenge - using angr"/>
+<meta property="og:url" content="//localhost:1313/posts/vikectf/floating-viking-head/">
+  <meta property="og:site_name" content="Daniel Dinari">
+  <meta property="og:title" content="Floating Viking Head (vikeCTF 2023)">
+  <meta property="og:description" content="Easy Reverse Engineering Challenge - using angr">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-03-19T20:02:00-05:00">
+    <meta property="article:modified_time" content="2023-03-19T20:02:00-05:00">
+    <meta property="article:tag" content="Reverse Engineering">
+    <meta property="article:tag" content="Easy">
+    <meta property="article:tag" content="Writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Floating Viking Head (vikeCTF 2023)">
+<meta name="twitter:description" content="Easy Reverse Engineering Challenge - using angr">
 
 
 <script type="application/ld+json">
@@ -101,18 +104,14 @@
 }
 </script>
 </head>
-
-<body class=" dark" id="top">
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="//localhost:1313/" accesskey="h" title="Daniel Dinari  (Alt + H)">
                 <img src="//localhost:1313/clueless.png" alt="" aria-label="logo"
                     height="40">Daniel Dinari </a>
             <div class="logo-switches">
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -154,13 +153,15 @@
 <article class="post-single">
   <header class="post-header">
     <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       Floating Viking Head (vikeCTF 2023)
     </h1>
     <div class="post-description">
       Easy Reverse Engineering Challenge - using angr
     </div>
-    <div class="post-meta">&lt;span title=&#39;2023-03-19 20:02:00 -0500 -0500&#39;&gt;Mar 19, 2023 &lt;/span&gt;&amp;nbsp;·&amp;nbsp;3 min&nbsp;|&nbsp;<a href="https://github.com/doxxedd/dinari.ca/tree/main/content/posts/vikectf/floating-viking-head.md" rel="noopener noreferrer" target="_blank">Suggest Edit</a>
+    <div class="post-meta"><span title='2023-03-19 20:02:00 -0500 -0500'>Mar 19, 2023 </span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;|&nbsp;<span>
+    <a href="https://github.com/doxxedd/dinari.ca/tree/main/content/posts/vikectf/floating-viking-head.md" rel="noopener noreferrer edit" target="_blank">Suggest Edit</a>
+</span>
 
 </div>
   </header> <div class="toc">
@@ -193,8 +194,7 @@
 <hr>
 <h2 id="writeup">Writeup<a hidden class="anchor" aria-hidden="true" href="#writeup">#</a></h2>
 <p>Running <code>file</code> on our file tells us that it is an unstripped ELF executable. Running it reveals the following:
-<img loading="lazy" src="/vikectf-floating-viking-head/2023-03-19_18-52.png#center" alt="name"  />
-</p>
+<img alt="name" loading="lazy" src="/vikectf-floating-viking-head/2023-03-19_18-52.png#center"></p>
 <p>Cool ASCII art, but this shows me that this challenge is a prime candidate for the use of <a href="https://angr.io/">angr</a>. Anytime where the program hits a failure and success point, <code>angr</code> could be used to solve for the flag.</p>
 <p>Opening Ghidra, and looking inside the main method shows us everything we need: the success address, failure address, and base address. Let me explain.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -261,8 +261,7 @@
 <p><code>fail_addr</code> = line 18, the address of the call to the <code>fwrite</code> function</p>
 <p>To find an address of a function, simply click on the name of the function and the corresponding assembly code will be revealed</p>
 <p><code>base_addr</code> = scroll ALL the way up to the beginning of the assembly code in Ghidra (usually it&rsquo;s 00100000)
-<img loading="lazy" src="/vikectf-floating-viking-head/2023-03-19_19-47.png#center" alt="name"  />
-</p>
+<img alt="name" loading="lazy" src="/vikectf-floating-viking-head/2023-03-19_19-47.png#center"></p>
 <p><code>flag_len</code> = this could just be the length of the char array (40), line 6. But, if you really wanna get it fully accurate then open <code>encrypt()</code> that reveals:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -350,9 +349,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
