@@ -88,8 +88,8 @@ params:
   homeInfoParams:
     Title: "Hi there,"
     Content: >
-      My name is Daniel Dinari and I'm an undergrad student at 
-      **Queen's University** studying **Computing**, with a **Security** focus.
+      I'm Daniel Dinari, a 4th year undergrad student  at **Queen's University** 
+      studying **Computer Science**, with a **Cybersecurity** focus.
       Here I post CTF writeups, my [resume](/resume.pdf), past [CTF rankings](/placements) and 
       [more](/about).
 
