@@ -11,8 +11,6 @@ hideMeta: true
 # weight: 1
 ---
 
-CTFTime Team ID: [Inodes](https://ctftime.org/team/214260)
-
 CTFTime ID: [doxxedd](https://ctftime.org/user/154114)
 
 RingZer0: [doxxedd](https://ringzer0ctf.com/profile/44558/doxxedd)

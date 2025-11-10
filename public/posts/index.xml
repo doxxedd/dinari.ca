@@ -43,26 +43,5 @@
       <guid>//localhost:1313/posts/lactf/finals-simulator/</guid>
       <description>Easy Reverse Engineering Challenge - my first write up!</description>
     </item>
-    <item>
-      <title></title>
-      <link>//localhost:1313/posts/qctf/bashed-in/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/qctf/bashed-in/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title></title>
-      <link>//localhost:1313/posts/qctf/echo-me/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/qctf/echo-me/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title></title>
-      <link>//localhost:1313/posts/qctf/write-me/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/qctf/write-me/</guid>
-      <description></description>
-    </item>
   </channel>
 </rss>
