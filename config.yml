@@ -95,7 +95,7 @@ params:
 
   socialIcons:
     - name: github
-      url: "https://github.com/doxxedd?tab=repositories"
+      url: "https://github.com/doxxedd"
     - name: linkedin
       url: "https://www.linkedin.com/in/daniel-dinari/"
     - name: ctftime
