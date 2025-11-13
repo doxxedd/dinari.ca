@@ -25,7 +25,7 @@ I'm also currently a SOC Analyst at [**IBM Canada**](https:///www.ibm.com/ca-en)
 
 ---
 #### Long Term Goals:
-I am deeply passionate about cybersecurity and CTFs specifically, Binary Exploitation, Reverse Engineering and aspire to be a **Red Teamer**. I've also recently started exploring Adversarial Machine Learning because **AI Threat Hunting** sounds very interesting to me.
+I am deeply passionate about cybersecurity and CTFs, specifically in Binary Exploitation, Reverse Engineering and aspire to be a **Red Teamer**. I've also recently started exploring Adversarial Machine Learning because **AI Threat Hunting** sounds very interesting to me.
 
 I still have a lot to learn so I frequently participate in CTFs along with completing [HTB](https://app.hackthebox.com/home) boxes and [RingZer0](https://ringzer0ctf.com) challenges. After which, I'll go for my [eJPT](https://ine.com/security/certifications/ejpt-certification), and [OSCP](https://www.offsec.com/courses/pen-200/), as well as focusing more on Dreadnode and HTB Labs.
 
