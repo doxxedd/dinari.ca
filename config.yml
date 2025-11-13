@@ -102,8 +102,10 @@ params:
       url: "https://ctftime.org/user/154114"
     - name: RingZer0
       url: https://ringzer0ctf.com/profile/44558/doxxedd
-    - name: tryhackme
-      url: https://tryhackme.com/p/ddoxxed
+    - name: picoCTF
+      url: https://play.picoctf.org/users/doxxedd
+    # - name: tryhackme
+    #   url: https://tryhackme.com/p/ddoxxed
     # - name: twitter
     #   url: "https://twitter.com/ddoxxedd"
     # - name: hackthebox
