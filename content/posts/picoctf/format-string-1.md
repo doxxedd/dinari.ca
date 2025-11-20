@@ -2,7 +2,7 @@
 title: "Format String 1 (picoCTF 2024)"
 summary: "Easy pwn chal - Format String Vuln"
 description: "Easy pwn chal - Format String Vuln"
-tags: [pwn, easy, writeup]
+tags: [PWN, easy, writeup, format_string]
 date: 2024-04-07T22:00:00-05:00
 draft: true
 searchHidden: false

@@ -2,7 +2,7 @@
 title: "Heap 2 (picoCTF 2024)"
 summary: "Easy pwn chal - Heap Overflow Exploit"
 description: "Easy pwn chal - Heap Overflow Exploit"
-tags: [pwn, easy, writeup]
+tags: [PWN, easy, writeup, heap, bof]
 date: 2024-04-06T22:00:00-05:00
 draft: true
 searchHidden: false

@@ -2,8 +2,8 @@
 title: "Rewrite It In Zig (amateursCTF 2025)"
 summary: "Medium pwn Challenge - BOF in Zig + ROPchains"
 description: "Medium pwn Challenge - BOF in Zig + ROPchains"
-tags: [pwn, medium, writeup]
-date: 2025-11-16T23:00:00-05:00
+tags: [PWN, medium, writeup, rop, bof]
+date: 2025-11-19T23:00:00-05:00
 draft: true
 searchHidden: false
 ShowToc: true
