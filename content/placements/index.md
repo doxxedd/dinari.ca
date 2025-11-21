@@ -17,9 +17,12 @@ RingZer0: [doxxedd](https://ringzer0ctf.com/profile/44558/doxxedd)
 
 picoCTF: [doxxedd](https://play.picoctf.org/users/doxxedd)
 
-<!-- TryHackMe: [ddoxxed](https://tryhackme.com/p/ddoxxed) -->
-
 ---
+
+### [amateursCTF 2025](https://ctf.amateurs.team/)
+- **Top 5% / 23rd Overall**: [Scoreboard](https://ctftime.org/event/2844)
+- Team: Qu4cks
+- Nov 13-17, 2025
 
 ### [QCTF 2024](https://qctf.ca/)
 - **1st in Queen's / 4th Overall**
@@ -37,7 +40,7 @@ picoCTF: [doxxedd](https://play.picoctf.org/users/doxxedd)
 - Apr 15-16, 2023
 
 ### [picoCTF 2023](https://play.picoctf.org/events/72/)
-- **Top 10%** globally and **249th** within undergrad students [Scoreboard](https://play.picoctf.org/events/72/scoreboards#2597)
+- **Top 10%** globally and **249th** (undergrad students): [Scoreboard](https://play.picoctf.org/events/72/scoreboards#2597)
 - Team: Inodes
 - Mar 14-28, 2023
 
