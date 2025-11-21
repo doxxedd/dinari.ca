@@ -1,7 +1,7 @@
 ---
 title: "Cipher Cracking (vikeCTF 2023)"
-summary: "Easy Cryptography Challenge - using CyberChef"
-description: "Easy Cryptography Challenge - using CyberChef"
+summary: "Easy Crypto Challenge - CyberChef"
+description: "Easy Crypto Challenge - CyberChef"
 tags: [CRYPTO, easy, writeup]
 date: 2023-03-19T19:00:00-05:00
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Gunnar the Gatekeeper (vikeCTF 2023)"
-summary: "Medium Reverse Engineering Challenge - patching"
-description: "Medium Reverse Engineering Challenge - patching"
+summary: "Medium Rev Challenge - patching"
+description: "Medium Rev Challenge - patching"
 tags: [REV, medium, writeup, patching]
 date: 2023-03-20T00:00:00-05:00
 draft: false

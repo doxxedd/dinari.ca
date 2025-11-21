@@ -1,7 +1,7 @@
 ---
 title: "Floating Viking Head (vikeCTF 2023)"
-summary: "Easy Reverse Engineering Challenge - using angr"
-description: "Easy Reverse Engineering Challenge - using angr"
+summary: "Easy Rev Challenge - using Angr"
+description: "Easy Rev Challenge - using Angr"
 tags: [REV, easy, writeup, angr]
 date: 2023-03-19T20:02:00-05:00
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Simple Stack Smash (SummitCTF 2023)"
-summary: "Easy pwn Challenge - ret2win"
-description: "Easy pwn Challenge - ret2win"
+summary: "Easy Pwn Challenge - ret2win"
+description: "Easy Pwn Challenge - ret2win"
 tags: [PWN, easy, writeup, ret2win]
 date: 2023-04-23T22:00:00-05:00
 draft: false
