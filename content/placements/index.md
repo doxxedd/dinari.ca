@@ -19,6 +19,12 @@ picoCTF: [doxxedd](https://play.picoctf.org/users/doxxedd)
 
 ---
 
+### [CyberSci 2025](https://cybersecuritychallenge.ca/en/)
+- **3rd place in Ottawa Region / 15th in Canada**: [Scoreboard](https://ctftime.org/event/2909)
+- **3-way tie** in points between the top 3 teams (Ottawa Region)
+- Team: Qu4cks ext.
+- Nov 22, 2025
+
 ### [amateursCTF 2025](https://ctf.amateurs.team/)
 - **Top 5% / 23rd Overall**: [Scoreboard](https://ctftime.org/event/2844)
 - Team: Qu4cks
@@ -27,7 +33,7 @@ picoCTF: [doxxedd](https://play.picoctf.org/users/doxxedd)
 ### [QCTF 2024](https://qctf.ca/)
 - **1st in Queen's / 4th Overall**
 - Team: Inodes
-- Mar 31st, 2024
+- Mar 31, 2024
 
 ### [picoCTF 2024](https://play.picoctf.org/events/73/)
 - **Top 6% globally / 412th**: [Scoreboard](https://play.picoctf.org/events/73/scoreboards#3455)
@@ -65,4 +71,4 @@ picoCTF: [doxxedd](https://play.picoctf.org/users/doxxedd)
 ### [QCTF 2023](https://qctf.ca/)
 - **5th place**: [Scoreboard](QCTF_2022.pdf)
 - Team: Zer0 D4y 0utl4ws
-- Jan 21st, 2023
+- Jan 21, 2023
