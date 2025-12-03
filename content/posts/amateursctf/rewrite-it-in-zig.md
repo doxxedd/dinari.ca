@@ -60,7 +60,7 @@ The goal is to call `execve("/bin/sh", 0, 0)` ([execve() man page](https://man7.
 So now we need to find some [ROP Gadgets](https://ctf101.org/binary-exploitation/return-oriented-programming/) (small and useful snippets of assembly that already exist in the binary) and manipulate them in a way that first we read "/bin/sh" from our input into a writable memory location and then call that address to spawn a shell. The process of sequentially executing these gadgets, for an exploit is called **ROP Chaining**.
 
 #### Stage 1: reading to write? yes.
-So we first need to call the `read(0, .bss, 8)` syscall to read the 8 byte string "bin/sh" from our input into a writable memory section (.bss)
+So we first need to call the `read(0, .bss, 8)` syscall to read the 8 byte string "bin/sh" from our input into a writable memory section.
 ([read() man page](https://man7.org/linux/man-pages/man2/execve.2.html))
 #### Stage 2: spawn shell
 Now we can call `execve(.bss, 0, 0)` to spawn a shell (.bss contains our "/bin/sh" string)
@@ -68,12 +68,27 @@ Now we can call `execve(.bss, 0, 0)` to spawn a shell (.bss contains our "/bin/s
 ### Finding ROP Gadgets
 There's usually a few gadgets that `pop` registers off of the stack and then call `ret` (thats where the **Return** part in **Return-Oriented-Programming** comes from). A "nice" gadget would for example be `pop rsi; ret`, no unnecessary instructions, just a `pop` and `ret`. 
 
-A not very nice gadget however.. we will see in a second.
+(I was presented with un-nice syscall gadgets the first time.. read [personal note](#personal-note))
 
-Running `ropper --file chal --search "pop %"` will show us some gadgets that we can work with. Look for any nice gadgets and trry
+Running `ropper --file chal --search "pop %"` will show us some gadgets that we can work with. Look for any nice gadgets of popping **rax**, **rdi**, **rsi** and **rdx**. Why these specifically? Because Linus decided years ago that [this](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/) is how the Linux System Call Convention (ABI) should be set so we're not gonna question too much here.
 
-## Solve script
-Completing the script:
+Basically, we fill those registers as the parameters of  read() and execve() syscalls.
+
+![name](/amateursctf-rewrite-it-in-zig/2025-12-03-023330.png#center)
+For example to find a pop rsi, we can pick `0x0104a153` as its not looking too dirty. We can just fill the rbp with junk to set rsi for this gadget.
+
+Rinse and repeat for the rest of the registers.
+
+## Putting it all together
+After noting the useful gadget addresses down, the rest of the exploit is pretty easy. Just fill up the registers with the correct info and make the syscalls (read and execve) that we create in each stage. 
+
+The last piece of info we need is **where** our string can be actually written to. The .bss section is the uninitialized global variables section in the binary and we can see here that it has Read+Write permissions. I just picked `0x200` (which is basicaly `0x10d8000 + 0x200`) that's in range of the start and end address of our .bss section.
+
+![name](/amateursctf-rewrite-it-in-zig/2025-12-03-030841.png#center)
+
+I should add, without that small sleep in the program (line 68) there's not enough time after our ropchain creation and injection for the program's read syscall to be loaded in(not the one we wrote). After it has loaded in, we can pass our string in the program.
+
+### Solve script
 ```py {linenos=true}
 from pwn import *
 
@@ -150,7 +165,7 @@ p.interactive()
 
 ```
 
-### Flag
+#### Flag
 
 `amateursCTF{i_love_zig_its_my_favorite_language_and_you_will_never_escape_the_zig_pwn_ahahaha}`
 
