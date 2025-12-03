@@ -45,29 +45,32 @@ We can see 0x100 or 256 bytes are being allocated on the stack however buffer le
 ![name](/amateursctf-rewrite-it-in-zig/2025-11-17-233231.png#center)
 Checksec reveals that we have NX enabled so the stack is non-executable. No injecting shellcode here, instead we have to use Return-Oriented-Programming (ROP). PIE being disabled makes everything easier as our ROP gadgets and BSS data segment will be at a constant address. We have to verify if the stack canary actually exists since Zig binaries handle stack protection differently than C and also bof might bypass the canary depending on the stack layout (we'll come back to this).
 
-
 ### Finding Offset
 Lets how many bytes we have to send before we hit the RSP and the return address:
 - `pwndbg chal`
 - `cyclic 500` (copy this)
 - Run the binary `r` then pass the cyclic pattern
 - Check what RSP is (the last thing that was on the stack causing the seg fault)
-- `cyclic -o uaaaaaab` return offset at **360** (-8 for RBP which we wanna control = **352**)
+- `cyclic -o uaaaaaab` returns offset at **360** (-8 for RBP which we wanna control = **352**)
 ![name](/amateursctf-rewrite-it-in-zig/2025-11-21-163553.png#center)
 
 ### ROP Chain Strategy
-The goal is to call `execve("/bin/sh", 0, 0)` ([execve() man page](https://man7.org/linux/man-pages/man2/execve.2.html)) and get a shell so it would've been nice if we had the string "/bin/sh" somewhere in the binary (we don't)  which we could just call here after our padding. `strings | grep '/bin/sh'` doesn't return anything.
+The goal is to call `execve("/bin/sh", 0, 0)` ([execve() man page](https://man7.org/linux/man-pages/man2/execve.2.html)) and get a shell so it would've been nice if we had the string "/bin/sh" somewhere in the binary (we don't)  which we could just call here after our padding and get shell. Looking for said string, `strings | grep '/bin/sh'` doesn't return anything 😔
 
-(explain why .bss)
+So now we need to find some [ROP Gadgets](https://ctf101.org/binary-exploitation/return-oriented-programming/) (small and useful snippets of assembly that already exist in the binary) and manipulate them in a way that first we read "/bin/sh" from our input into a writable memory location and then call that address to spawn a shell. The process of sequentially executing these gadgets, for an exploit is called **ROP Chaining**.
 
-#### Stage 1
+#### Stage 1: reading to write? yes.
 So we first need to call `read(0, .bss, 8)` to read the 8 byte string "bin/sh" from our input into a writable memory section (.bss)
 ([read() man page](https://man7.org/linux/man-pages/man2/execve.2.html))
-#### Stage 2
+#### Stage 2: spawn shell
 Now we can call `execve(.bss, 0, 0)` to spawn a shell (.bss contains our "/bin/sh" string)
 
 ### Finding ROP Gadgets
-TODO
+There's usually a few gadgets that `pop` registers off of the stack and then call `ret` (thats where the **Return** part in **Return-Oriented-Programming** comes from). A "nice" gadget would for example be `pop rsi; ret`, no unnecessary instructions, just a `pop` and `ret`. 
+
+A not very nice gadget however.. we will see in a second.
+
+
 
 ## Solve script
 Completing the script:
