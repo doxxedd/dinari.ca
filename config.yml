@@ -11,6 +11,21 @@ enableInlineShortcodes: true
 enableEmoji: true
 pygmentsUseClasses: false
 
+sitemap:
+  changefreq: "weekly"
+  priority: 0.5
+  filename: "sitemap.xml"
+cascade:
+  - sitemap:
+      changefreq: "daily"
+      priority: 1
+    _target:
+      path: "/posts/**"
+  - sitemap:
+      disable: true
+    _target:
+      path: "/tags/**"
+
 minify:
   disableXML: true
   # minifyOutput: true this will break the site
