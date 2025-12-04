@@ -13,12 +13,16 @@ pygmentsUseClasses: false
 
 sitemap:
   changefreq: "weekly"
-  priority: 0.5
+  priority: 0.4
   filename: "sitemap.xml"
 cascade:
   - sitemap:
-      changefreq: "daily"
       priority: 1
+    _target:
+      path: "/"
+  - sitemap:
+      changefreq: "daily"
+      priority: 0.8
     _target:
       path: "/posts/**"
   - sitemap:
