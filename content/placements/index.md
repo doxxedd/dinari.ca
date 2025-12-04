@@ -7,6 +7,8 @@ ShowReadingTime: false
 disableHLJS: true
 robotsNoIndex: true
 hideMeta: true
+sitemap:
+  priority: 0.6
 # edit_post: false
 # weight: 1
 ---
