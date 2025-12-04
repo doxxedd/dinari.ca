@@ -25,6 +25,10 @@ cascade:
       disable: true
     _target:
       path: "/tags/**"
+  - sitemap:
+      disable: true
+    _target:
+      path: "/categories/**"
 
 minify:
   disableXML: true
