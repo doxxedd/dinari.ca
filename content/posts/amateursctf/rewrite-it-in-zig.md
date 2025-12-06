@@ -26,7 +26,7 @@ Given file: [rewrite-it-zig.tar.gz](/amateursctf-rewrite-it-in-zig/rewrite-it-zi
 
 This challenge is written in [Zig](https://ziglang.org/) and the given source code is:
 
-```zig {linenos=true}
+```zig
 const std = @import("std");
 const print = std.debug.print;
 
@@ -43,7 +43,7 @@ pub fn main() void {
 We can see 0x100 or 256 bytes are being allocated on the stack however buffer length is set to 0x1000 (4096 bytes). This allows user to input 4096 bytes into a 256-byte buffer.
 
 ![name](/amateursctf-rewrite-it-in-zig/2025-11-17-233231.png#center)
-Checksec reveals that we have NX enabled so the stack is non-executable. No injecting shellcode here, instead we have to use Return-Oriented-Programming (ROP). PIE being disabled makes everything easier as our ROP gadgets and BSS data segment will be at a constant address. We have to verify if the stack canary actually exists since Zig binaries handle stack protection differently than C and also bof might bypass the canary depending on the stack layout (we'll come back to this).
+Checksec reveals that we have NX enabled so the stack is non-executable. No injecting shellcode here, instead we have to use Return-Oriented-Programming (ROP). PIE being disabled makes everything easier as our ROP gadgets and BSS data segment will be at a constant address. We have to verify if the stack canary actually exists since Zig binaries handle stack protection differently than C and also bof might bypass the canary depending on the stack layout (we'll come back to this if need be).
 
 ### Finding Offset
 Lets how many bytes we have to send before we hit the RSP and the return address:
