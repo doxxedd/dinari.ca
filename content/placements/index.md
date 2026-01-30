@@ -29,6 +29,7 @@ picoCTF: [doxxedd](https://play.picoctf.org/users/doxxedd)
 
 ### [amateursCTF 2025](https://ctf.amateurs.team/)
 - **Top 5% / 23rd Overall**: [Scoreboard](https://ctftime.org/event/2844)
+- My [writeup](/posts/amateursctf/rewrite-it-in-zig) **won an award!**
 - Team: Qu4cks
 - Nov 13-17, 2025
 
@@ -59,7 +60,7 @@ picoCTF: [doxxedd](https://play.picoctf.org/users/doxxedd)
 
 ### [vikeCTF 2023](https://ctf.vikesec.ca/)
 - **Top 18% / 36th**: [Scoreboard](https://ctftime.org/event/1884)
-- My [writeup](/posts/vikectf/floating-viking-head) **won Best *"Unintended"***
+- My [writeup](/posts/vikectf/floating-viking-head) **won the best *"Unintended solution"* award!**
 - Team: Inodes
 - Mar 17-19, 2023
 

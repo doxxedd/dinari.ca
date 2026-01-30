@@ -22,6 +22,9 @@ Given file: [rewrite-it-zig.tar.gz](/amateursctf-rewrite-it-in-zig/rewrite-it-zi
 
 ## Writeup
 
+Update:
+This writeup **won an award** from amateursCTF team! Thanks guys :)
+
 ### Initial Analysis
 
 This challenge is written in [Zig](https://ziglang.org/) and the given source code is:

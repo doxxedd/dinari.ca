@@ -36,7 +36,7 @@ I still have a lot to learn so I frequently participate in CTFs along with compl
 
 
 #### Hobbies:
-... I'm also building a [1999 Honda Civic Hatchback](https://instagram.com/bumblebee_ek) into a K-Swapped track car and fly FPV drones in my pastime (I go by “MapleFPV” in the drone world!). [YouTube](https://www.youtube.com/@maplefpv/)
+... I'm also building a **1999 Honda Civic Hatchback** into a K-Swapped track car and fly FPV drones in my pastime (I go by “MapleFPV” in the drone world!). [YouTube](https://www.youtube.com/@maplefpv/)
 
 ---
 
