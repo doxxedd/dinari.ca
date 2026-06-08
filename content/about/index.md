@@ -19,18 +19,14 @@ hideMeta: true
 
 My name is Daniel Dinari and I go by "doxxedd" in the CTF world.
 
-I'm a **4th-year** undergraduate student at **Queen's University** studying Computing with a **Cybersecurity focus**.
-
-I'm also currently a SOC Analyst at [**IBM Canada**](https:///www.ibm.com/ca-en).
+I'm a **Cybersecurity Consultant** at [**IBM Canada**](https:///www.ibm.com/ca-en) and a recent [Queen's University](https://www.queensu.ca/) graduate with a Bachelor's degree in Computing, specialized in Cybersecurity.
 
 ---
-#### Long Term Goals:
-I am deeply passionate about cybersecurity and CTFs, specifically in Binary Exploitation, Reverse Engineering and aspire to be a **Red Teamer**. I've also recently started exploring Adversarial Machine Learning because **AI Threat Hunting** sounds very interesting to me.
+#### Long Term Career Goals:
+I am deeply passionate about Cybersecurity and CTFs, specifically Binary Exploitation, Reverse Engineering and aspire to be a **Red Teamer**. I've also recently started exploring Adversarial Machine Learning because **AI Threat Hunting** sounds very interesting to me.
 
 I still have a lot to learn so I frequently participate in CTFs along with completing [HTB](https://app.hackthebox.com/home) boxes and [RingZer0](https://ringzer0ctf.com) challenges. After which, I'll go for my [eJPT](https://ine.com/security/certifications/ejpt-certification), and [OSCP](https://www.offsec.com/courses/pen-200/), as well as focusing more on Dreadnode and HTB Labs.
 
-
-&nbsp;
 
 &nbsp;
 
@@ -41,6 +37,6 @@ I still have a lot to learn so I frequently participate in CTFs along with compl
 ---
 
 #### Contact me:
-Discord:`maple107`
-
 LinkedIn:`Daniel Dinari`
+
+Discord:`maple107`

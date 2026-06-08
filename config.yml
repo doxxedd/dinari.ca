@@ -111,16 +111,14 @@ params:
   homeInfoParams:
     Title: "Hi there,"
     Content: >
-      I'm Daniel Dinari, a 4th year undergrad student  at **Queen's University** 
-      studying **Computer Science**, with a **Cybersecurity** focus.
-      Here I post CTF writeups, my [resume](/resume.pdf), past [CTF rankings](/placements) and 
-      [more](/about).
+      I'm Daniel Dinari, a **Cybersecurity Consultant** at **IBM** and a recent Queen's University graduate with a degree in Computing, specialized in Cybersecurity.
+      Here I post CTF writeups, my [resume](/resume.pdf), past [CTF rankings](/placements) and [more](/about).
 
   socialIcons:
-    - name: github
-      url: "https://github.com/doxxedd"
     - name: linkedin
       url: "https://www.linkedin.com/in/daniel-dinari/"
+    - name: github
+      url: "https://github.com/doxxedd"
     - name: ctftime
       url: "https://ctftime.org/user/154114"
     - name: RingZer0
