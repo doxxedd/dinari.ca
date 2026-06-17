@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCA Portfolio Engine - Pro UI</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/vis-timeline@7.7.2/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <link href="https://unpkg.com/vis-timeline@7.7.2/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="main-content">
+        <h2>DCA DEPLOYMENT ENGINE</h2>
+        
+        <div class="portfolio-manager">
+            <div class="input-group" style="flex-direction: row; align-items: center; gap: 0.5rem;">
+                <label style="margin: 0;">Portfolio:</label>
+                <select id="portfolio-select" style="min-width: 150px;"></select>
+            </div>
+            <div class="portfolio-actions">
+                <button class="btn-preset" id="btn-new-portfolio">New</button>
+                <button class="btn-preset active" id="btn-save-portfolio">Save</button>
+                <button class="btn-delete" id="btn-delete-portfolio" style="padding: 0.4rem 0.8rem; height: auto;">Delete</button>
+            </div>
+        </div>
+
+        <div class="master-controls">
+            <div class="input-group" style="flex-grow: 1;">
+                <label>Total Target Allocation ($)</label>
+                <input type="number" id="global-total" value="0">
+            </div>
+            
+            <div class="input-group" style="flex-grow: 1;">
+                <label>Investment Frequency</label>
+                <select id="invest-frequency">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="biweekly">Bi-weekly</option>
+                </select>
+            </div>
+            
+            <div class="input-group" id="day-of-week-group" style="display: none; flex-grow: 1;">
+                <label>Day of the Week</label>
+                <select id="invest-day">
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Total Allocated</label>
+                <div id="allocation-sum" style="font-size: 1.2rem; font-weight: bold; color: var(--gold-accent);">0%</div>
+            </div>
+        </div>
+
+        <details class="smart-scheduler">
+            <summary class="scheduler-header" style="cursor: pointer;">
+                <span>📅 Smart Schedule Manager (Click to Expand)</span>
+            </summary>
+            
+            <div class="preset-row">
+                <button class="btn-preset active" data-preset="30">Next 30 Days</button>
+                <button class="btn-preset" data-preset="90">Next Quarter</button>
+                <button class="btn-preset" data-preset="eoy">Until End of Year</button>
+                <button class="btn-preset" data-preset="custom">Custom Range</button>
+            </div>
+
+            <div class="date-target-row">
+                <div class="input-group" style="width: 160px;">
+                    <label>Start</label>
+                    <input type="date" id="master-start">
+                </div>
+                <div class="input-group" style="width: 160px;">
+                    <label>End</label>
+                    <input type="date" id="master-end">
+                </div>
+                
+                <div class="input-group" style="flex-grow: 1; padding-left: 1rem; border-left: 1px solid #333;">
+                    <label>Apply Targets To:</label>
+                    <div class="target-list" id="target-checkboxes">
+                    </div>
+                </div>
+
+                <button class="btn-apply-dates" id="btn-apply-dates">Apply</button>
+            </div>
+        </details>
+
+        <div class="table-scroll-container">
+            <div id="asset-headers" class="asset-headers">
+                <!-- Headers injected by JS -->
+            </div>
+            <div id="asset-list"></div>
+        </div>
+
+        <button class="btn-add" id="btn-add-row">+ Add New Asset Row</button>
+
+        <div class="action-buttons" style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
+            <button class="btn-run" id="btn-run-sim" style="width: auto; padding: 0.8rem 2rem;">Run Deployment Simulation</button>
+            <button class="btn-run" id="btn-toggle-timeline" style="width: auto; padding: 0.8rem 2rem; background-color: #333; color: var(--gold-accent); border: 1px solid var(--gold-accent);">Toggle Timeline</button>
+        </div>
+
+        <div id="graph-dropdown" class="dropdown-container">
+            <div class="totals-bar">
+                <span>Deployment Schedule</span>
+                <span id="period-total-label">Total per Deployment: $0.00</span>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="dcaChart"></canvas>
+            </div>
+        </div>
+
+        <div id="timeline-wrapper" class="timeline-wrapper">
+            <h3 style="color: var(--gold-accent); margin-top: 0;">Interactive Deployment Timeline</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Drag the bars left or right to adjust start and end dates. Drag the edges to resize the duration.</p>
+            <div id="timeline-container"></div>
+        </div>
+    </div>
+    
+    <div class="side-panel">
+        <div class="pie-chart-container">
+            <h3 style="color: var(--gold-accent); margin-top: 0; text-align: center;">Current Allocation</h3>
+            <canvas id="allocationPieChart"></canvas>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
