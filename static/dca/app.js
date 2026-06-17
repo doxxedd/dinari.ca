@@ -129,10 +129,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (saved) {
             state.portfolios = JSON.parse(saved);
         } else {
+            const today = new Date();
+            const eoy = new Date(today.getFullYear(), 11, 31);
+            const todayStr = formatDateStr(today);
+            const eoyStr = formatDateStr(eoy);
+
             state.portfolios = {
                 'Default': { 
-                    assets: [], 
-                    total: '0',
+                    assets: [
+                        { id: 1, name: 'BTC', type: 'crypto', percent: 20, val: 2000, invested: false, start: todayStr, end: eoyStr },
+                        { id: 2, name: 'VEQT', type: 'trad', percent: 80, val: 8000, invested: false, start: todayStr, end: eoyStr }
+                    ], 
+                    total: '10000',
                     columns: JSON.parse(JSON.stringify(state.columns)),
                     frequency: 'daily',
                     dayOfWeek: '1'
@@ -200,13 +208,44 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let hasEmpty = false;
         state.assets.forEach(a => {
-            if (!a.start && !a.end) hasEmpty = true;
+            if (!a.start && !a.end && !a.invested) hasEmpty = true;
         });
 
         if (hasEmpty && state.assets.length > 0) {
             els.masterStart.value = formatDateStr(today);
             els.masterEnd.value = formatDateStr(defaultEnd);
         }
+    };
+
+    const showValidationTooltip = (el, message) => {
+        const existing = document.getElementById('validation-tooltip');
+        if (existing) existing.remove();
+
+        const tooltip = document.createElement('div');
+        tooltip.id = 'validation-tooltip';
+        tooltip.className = 'validation-tooltip';
+        tooltip.innerHTML = `<span>⚠️</span> ${message}`;
+        
+        document.body.appendChild(tooltip);
+
+        const rect = el.getBoundingClientRect();
+        tooltip.style.top = `${rect.top + window.scrollY - 45}px`;
+        tooltip.style.left = `${rect.left + window.scrollX}px`;
+
+        requestAnimationFrame(() => tooltip.classList.add('visible'));
+
+        el.focus();
+
+        const removeTooltip = () => {
+            tooltip.classList.remove('visible');
+            setTimeout(() => { if (tooltip.parentNode) tooltip.remove(); }, 300);
+            el.removeEventListener('input', removeTooltip);
+            window.removeEventListener('scroll', removeTooltip);
+        };
+
+        el.addEventListener('input', removeTooltip);
+        window.addEventListener('scroll', removeTooltip);
+        setTimeout(removeTooltip, 5000); 
     };
 
     const getGridTemplateColumns = () => {
@@ -478,8 +517,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = prompt("Enter a name for the new portfolio:");
             if (name && name.trim() !== '') {
                 state.currentPortfolio = name.trim();
-                state.assets = [];
-                els.globalTotal.value = '0';
+                const todayStr = formatDateStr(new Date());
+                const eoyStr = formatDateStr(new Date(new Date().getFullYear(), 11, 31));
+                
+                state.assets = [
+                    { id: Date.now(), name: 'BTC', type: 'crypto', percent: 20, val: 2000, invested: false, start: todayStr, end: eoyStr },
+                    { id: Date.now()+1, name: 'VEQT', type: 'trad', percent: 80, val: 8000, invested: false, start: todayStr, end: eoyStr }
+                ];
+                els.globalTotal.value = '10000';
                 savePortfolio(state.currentPortfolio);
                 applyPortfolio(state.currentPortfolio);
             }
@@ -676,6 +721,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         els.btnRunSim.addEventListener('click', () => {
+            // Validation Logic
+            let firstInvalidField = null;
+            let errorMessage = "Please fill in this field.";
+            
+            for (let i = 0; i < state.assets.length; i++) {
+                const asset = state.assets[i];
+                const rowElements = els.assetList.children[i];
+                if (!rowElements) continue;
+
+                if (!asset.name) {
+                    firstInvalidField = rowElements.querySelector('.input-name');
+                    errorMessage = "Asset name is required.";
+                } else if (asset.percent <= 0 && parseFloat(els.globalTotal.value) > 0) {
+                    firstInvalidField = rowElements.querySelector('.input-percent');
+                    errorMessage = "Percentage must be greater than 0.";
+                } else if (!asset.invested) {
+                    if (!asset.start) {
+                        firstInvalidField = rowElements.querySelector('.input-start');
+                        errorMessage = "Start date is required.";
+                    } else if (!asset.end) {
+                        firstInvalidField = rowElements.querySelector('.input-end');
+                        errorMessage = "End date is required.";
+                    } else if (new Date(asset.start) > new Date(asset.end)) {
+                        firstInvalidField = rowElements.querySelector('.input-end');
+                        errorMessage = "End date must be after Start date.";
+                    }
+                }
+
+                if (firstInvalidField) break;
+            }
+
+            if (firstInvalidField) {
+                showValidationTooltip(firstInvalidField, errorMessage);
+                return;
+            }
+
+            // Run Simulation
             if (!state.chartOpen) {
                 els.graphDropdown.classList.add('active');
                 state.chartOpen = true;
