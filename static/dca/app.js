@@ -363,7 +363,10 @@ document.addEventListener('DOMContentLoaded', () => {
         els.allocationSum.innerText = `${totalPct.toFixed(2)}%`;
         els.allocationSum.style.color = Math.abs(totalPct - 100) > 0.1 ? 'var(--danger)' : 'var(--gold-accent)';
 
-        if (state.chartOpen) updateChart();
+        if (state.chartOpen) {
+            els.graphDropdown.classList.remove('active');
+            state.chartOpen = false;
+        }
         updatePieChart();
         if (state.timelineChart) syncTimelineData();
     };
@@ -424,6 +427,17 @@ document.addEventListener('DOMContentLoaded', () => {
         state.timelineItems = new vis.DataSet();
         syncTimelineData();
 
+        let minTime = Infinity;
+        let maxTime = -Infinity;
+        state.assets.forEach(a => {
+            if (!a.invested && a.start && a.end) {
+                const s = new Date(a.start).getTime();
+                const e = new Date(a.end).getTime();
+                if (s < minTime) minTime = s;
+                if (e > maxTime) maxTime = e;
+            }
+        });
+
         const options = {
             editable: { updateTime: true, updateGroup: false, add: false, remove: false },
             margin: { item: 10, axis: 5 },
@@ -444,6 +458,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 callback(item);
             }
         };
+
+        if (minTime !== Infinity && maxTime !== -Infinity) {
+            const pad = Math.max((maxTime - minTime) * 0.15, 7 * 24 * 60 * 60 * 1000);
+            options.start = new Date(minTime - pad);
+            options.end = new Date(maxTime + pad);
+        }
 
         state.timelineChart = new vis.Timeline(els.timelineContainer, state.timelineItems, options);
     };
@@ -590,16 +610,33 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isNaN(index) || !state.assets[index]) return;
 
             const total = parseFloat(els.globalTotal.value) || 0;
+            const asset = state.assets[index];
+            const valStr = e.target.value.trim();
             
             if (e.target.classList.contains('input-name')) {
-                state.assets[index].name = e.target.value;
+                if (!/^[A-Za-z0-9\-\s]{1,20}$/.test(valStr)) {
+                    showValidationTooltip(e.target, "Alphanumeric, spaces, dashes (max 20 chars).");
+                    e.target.value = asset.name || '';
+                    return;
+                }
+                asset.name = valStr;
             } else if (e.target.classList.contains('input-type')) {
-                state.assets[index].type = e.target.value;
+                asset.type = valStr;
             } else if (e.target.classList.contains('input-percent')) {
-                state.assets[index].percent = parseFloat(e.target.value) || 0;
-                state.assets[index].val = (total * (state.assets[index].percent / 100)).toFixed(2);
+                if (!/^(100(\.0{1,2})?|\d{1,2}(\.\d{1,2})?)$/.test(valStr)) {
+                    showValidationTooltip(e.target, "Number between 0 and 100 with up to 2 decimals.");
+                    e.target.value = asset.percent || 0;
+                    return;
+                }
+                asset.percent = parseFloat(valStr) || 0;
+                asset.val = (total * (asset.percent / 100)).toFixed(2);
             } else if (e.target.classList.contains('input-val')) {
-                state.assets[index].val = parseFloat(e.target.value) || 0;
+                if (!/^\d+(\.\d{1,2})?$/.test(valStr)) {
+                    showValidationTooltip(e.target, "Positive number with up to 2 decimals.");
+                    e.target.value = asset.val || 0;
+                    return;
+                }
+                asset.val = parseFloat(valStr) || 0;
                 
                 let newTotal = state.assets.reduce((sum, a) => sum + (parseFloat(a.val) || 0), 0);
                 els.globalTotal.value = newTotal.toFixed(2);
@@ -612,17 +649,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     state.assets.forEach(a => { a.percent = 0; });
                 }
             } else if (e.target.classList.contains('input-start')) {
-                let d = e.target.value;
+                let d = valStr;
                 if (state.frequency !== 'daily') d = snapDateToDay(d, state.dayOfWeek);
-                state.assets[index].start = d;
-                e.target.value = d; // update dom
+                asset.start = d;
+                e.target.value = d;
             } else if (e.target.classList.contains('input-end')) {
-                let d = e.target.value;
+                let d = valStr;
                 if (state.frequency !== 'daily') d = snapDateToDay(d, state.dayOfWeek);
-                state.assets[index].end = d;
-                e.target.value = d; // update dom
+                asset.end = d;
+                e.target.value = d;
             } else if (e.target.classList.contains('input-invested')) {
-                state.assets[index].invested = e.target.checked;
+                asset.invested = e.target.checked;
             }
             renderRows();
         });
